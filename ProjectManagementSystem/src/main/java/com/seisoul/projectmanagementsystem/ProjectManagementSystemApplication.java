@@ -1,4 +1,4 @@
-package com.seisoul.projectManagementSystem;
+package com.seisoul.projectmanagementsystem;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

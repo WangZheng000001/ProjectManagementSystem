@@ -1,4 +1,4 @@
-package com.seisoul.projectManagementSystem;
+package com.seisoul.projectmanagementsystem;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

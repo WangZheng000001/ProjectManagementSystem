@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.seisoul</groupId>
-	<artifactId>projectManagementSystem</artifactId>
+	<artifactId>projectmanagementsystem</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>projectManagementSystem</name>
+	<name>ProjectManagementSystem</name>
 	<description>プロジェクト管理システム</description>
 	<properties>
 		<java.version>17</java.version>

@@ -1,3 +1,4 @@
+/*
 package com.seisoul.projectManagementSystem;
 
 import org.springframework.stereotype.Controller;
@@ -9,4 +10,4 @@ public class UserController {
     public String memberMission() {
         return "membermission";
     }
-}
+}*/

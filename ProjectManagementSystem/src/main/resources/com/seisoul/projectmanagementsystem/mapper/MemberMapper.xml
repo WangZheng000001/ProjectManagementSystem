@@ -19,16 +19,16 @@
         select * from tb_mem;
     </select>
 
-    <!--查询方法:通过id查询 返回值:Member对象 封装的数据:全数据-->
-    <select id="selectById" resultType="com.seisoul.projectmanagementsystem.pojo.Member">
+    <!--查询方法:通过成员id查询 返回值:Member对象 封装的数据:全数据-->
+    <select id="selectByMemId" resultType="com.seisoul.projectmanagementsystem.pojo.Member">
         select * from tb_mem
         <where>
             id = #{id}
         </where>
     </select>
 
-    <!--查询方法:通过姓名查询 返回值:Member对象 封装的数据:全数据-->
-    <select id="selectByName" resultType="com.seisoul.projectmanagementsystem.pojo.Member">
+    <!--查询方法:通过成员姓名查询 返回值:Member对象 封装的数据:全数据-->
+    <select id="selectByMemName" resultType="com.seisoul.projectmanagementsystem.pojo.Member">
         select * from tb_mem
         <where>
             mem_name like %{#memName}%
@@ -45,7 +45,7 @@
     </select>
 
     <!--查询方法:通过成员状态 返回值:Member对象 封装的数据:全数据-->
-    <select id="selectByStatus" resultType="com.seisoul.projectmanagementsystem.pojo.Member">
+    <select id="selectByMemStatus" resultType="com.seisoul.projectmanagementsystem.pojo.Member">
         select * from tb_mem
         <where>
             mem_status = #{memStatus};

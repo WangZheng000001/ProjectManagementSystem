@@ -9,15 +9,20 @@ import org.springframework.stereotype.Repository;
 public interface MemberMapper {
     Member selectByIdAndPassword(int memId, String memPassword);
 
-    Member selectAll(Member member);
+    //查询所有成员
+    Member selectAll();
 
-    Member selectById(Member member);
+    //通过成员id查询
+    Member selectByMemId(Member member);
 
-    Member selectByName(Member member);
+    //通过成员姓名查询
+    Member selectByMemName(Member member);
 
+    //通过是否是组长查询
     Member selectByLeader(Member member);
 
-    Member selectByStatus(Member member);
+    //通过成员状态
+    Member selectByMemStatus(Member member);
 
 
 }

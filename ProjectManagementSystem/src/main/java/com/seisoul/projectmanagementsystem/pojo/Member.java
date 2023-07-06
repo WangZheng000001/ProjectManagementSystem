@@ -1,60 +1,71 @@
 package com.seisoul.projectmanagementsystem.pojo;
 
 public class Member {
-   private int memId;
-   private String memPassword;
-   private String memName;
-   private int gender;
-   private int leader;
+    private Integer memId;
+    private String memPassword;
+    private String memName;
+    private Integer gender;
+    private Integer leader;
+    private Integer memStatus;
 
-    public int getMemId() {
-        return memId;
-    }
 
-    public void setMemId(int memId) {
-        this.memId = memId;
-    }
+   @Override
+   public String toString() {
+      return "Member{" +
+              "memId=" + memId +
+              ", memPassword='" + memPassword + '\'' +
+              ", memName='" + memName + '\'' +
+              ", gender=" + gender +
+              ", leader=" + leader +
+              ", memStatus=" + memStatus +
+              '}';
+   }
 
-    public String getMemPassword() {
-        return memPassword;
-    }
+   public Integer getMemId() {
+      return memId;
+   }
 
-    public void setMemPassword(String memPassword) {
-        this.memPassword = memPassword;
-    }
+   public void setMemId(Integer memId) {
+      this.memId = memId;
+   }
 
-    public String getMemName() {
-        return memName;
-    }
+   public String getMemPassword() {
+      return memPassword;
+   }
 
-    public void setMemName(String memName) {
-        this.memName = memName;
-    }
+   public void setMemPassword(String memPassword) {
+      this.memPassword = memPassword;
+   }
 
-    public int getGender() {
-        return gender;
-    }
+   public String getMemName() {
+      return memName;
+   }
 
-    public void setGender(int gender) {
-        this.gender = gender;
-    }
+   public void setMemName(String memName) {
+      this.memName = memName;
+   }
 
-    public int getLeader() {
-        return leader;
-    }
+   public Integer getGender() {
+      return gender;
+   }
 
-    public void setLeader(int leader) {
-        this.leader = leader;
-    }
+   public void setGender(Integer gender) {
+      this.gender = gender;
+   }
 
-    @Override
-    public String toString() {
-        return "Member{" +
-                "memId=" + memId +
-                ", memPassword='" + memPassword + '\'' +
-                ", memName='" + memName + '\'' +
-                ", gender=" + gender +
-                ", leader=" + leader +
-                '}';
-    }
+   public Integer getLeader() {
+      return leader;
+   }
+
+   public void setLeader(Integer leader) {
+      this.leader = leader;
+   }
+
+   public Integer getMemStatus() {
+      return memStatus;
+   }
+
+   public void setMemStatus(Integer memStatus) {
+      this.memStatus = memStatus;
+   }
 }

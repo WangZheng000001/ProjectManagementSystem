@@ -10,12 +10,76 @@
         <result column="gender" property="gender"/>
         <result column="leader" property="leader"/>
     </resultMap>
+    <!--=======================================================================================-->
+
+    <!--查询-->
+
+    <!--查询方法:查询所有 返回值:Member对象 封装的数据:全数据-->
+    <select id="selectAll" resultType="com.seisoul.projectmanagementsystem.pojo.Member">
+        select * from tb_mem;
+    </select>
+
+    <!--查询方法:通过id查询 返回值:Member对象 封装的数据:全数据-->
+    <select id="selectById" resultType="com.seisoul.projectmanagementsystem.pojo.Member">
+        select * from tb_mem
+        <where>
+            id = #{id}
+        </where>
+    </select>
+
+    <!--查询方法:通过姓名查询 返回值:Member对象 封装的数据:全数据-->
+    <select id="selectByName" resultType="com.seisoul.projectmanagementsystem.pojo.Member">
+        select * from tb_mem
+        <where>
+            mem_name like %{#memName}%
+
+        </where>
+    </select>
+
+    <!--查询方法:通过是否是组长查询 返回值:Member对象 封装的数据:全数据-->
+    <select id="selectByLeader" resultType="com.seisoul.projectmanagementsystem.pojo.Member">
+        select * from tb_mem
+        <where>
+            leader = #{leader};
+        </where>
+    </select>
+
+    <!--查询方法:通过成员状态 返回值:Member对象 封装的数据:全数据-->
+    <select id="selectByStatus" resultType="com.seisoul.projectmanagementsystem.pojo.Member">
+        select * from tb_mem
+        <where>
+            mem_status = #{memStatus};
+        </where>
+    </select>
+
+
+    <!--通过id和密码查询所有-->
     <select id="selectByIdAndPassword" resultMap="MemberResultMap">
-        select *from tb_mem
+        select * from tb_mem;
         <where>
             mem_id = #{memId}
             and mem_password = #{memPassword};
         </where>
     </select>
+
+
+    <!--=======================================================================================-->
+
+    <!--增加-->
+
+    <!--<insert id=""></insert>-->
+
+
+    <!--=======================================================================================-->
+
+    <!--修改-->
+
+    <!--<update id=""></update>-->
+
+    <!--=======================================================================================-->
+
+    <!--删除-->
+
+    <!--<delete id=""></delete>-->
 
 </mapper>

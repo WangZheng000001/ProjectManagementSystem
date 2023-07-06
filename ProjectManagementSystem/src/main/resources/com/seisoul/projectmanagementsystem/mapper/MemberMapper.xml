@@ -17,5 +17,17 @@
             and mem_password = #{memPassword};
         </where>
     </select>
+    <select id="selectAll" resultMap="MemberResultMap">
+        select * from tb_mem
+    </select>
+    <select id="selectAllMemName" resultMap="MemberResultMap">
+        select mem_name from tb_mem
+    </select>
+    <select id="selectByMemName" resultMap="MemberResultMap">
+        select * from tb_mem
+        <where>
+            mem_name = #{memName}
+        </where>
+    </select>
 
 </mapper>

@@ -19,4 +19,10 @@
             proj_password = #{projPassword};
         </where>
     </select>
+    <select id="selectByFkMemId" resultMap="ProjectResultMap">
+        select * from tb_proj
+        <where>
+            fk_mem_id = #{FkMemId};
+        </where>
+    </select>
 </mapper>

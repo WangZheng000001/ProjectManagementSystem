@@ -3,40 +3,23 @@ package com.seisoul.projectmanagementsystem.pojo;
 import java.sql.Date;
 /*对应任务表*/
 public class Mission {
-    private Integer misId;
+    private int misId;
     private String desc;
-    private Integer fkProjId;
+    private int fkProjId;
     private Date addTime;
     private Date expireTime;
-    private Integer misStatus;
+    private int misStatus;
     private Date startTime;
     private Date endTime;
-    private Integer level;
-    private Integer progress;
-    private Integer fkMemId;
+    private int level;
+    private int progress;
+    private int fkMemId;
 
-    @Override
-    public String toString() {
-        return "Mission{" +
-                "misId=" + misId +
-                ", desc='" + desc + '\'' +
-                ", fkProjId=" + fkProjId +
-                ", addTime=" + addTime +
-                ", expireTime=" + expireTime +
-                ", misStatus=" + misStatus +
-                ", startTime=" + startTime +
-                ", endTime=" + endTime +
-                ", level=" + level +
-                ", progress=" + progress +
-                ", fkMemId=" + fkMemId +
-                '}';
-    }
-
-    public Integer getMisId() {
+    public int getMisId() {
         return misId;
     }
 
-    public void setMisId(Integer misId) {
+    public void setMisId(int misId) {
         this.misId = misId;
     }
 
@@ -48,11 +31,11 @@ public class Mission {
         this.desc = desc;
     }
 
-    public Integer getFkProjId() {
+    public int getFkProjId() {
         return fkProjId;
     }
 
-    public void setFkProjId(Integer fkProjId) {
+    public void setFkProjId(int fkProjId) {
         this.fkProjId = fkProjId;
     }
 
@@ -72,11 +55,11 @@ public class Mission {
         this.expireTime = expireTime;
     }
 
-    public Integer getMisStatus() {
+    public int getMisStatus() {
         return misStatus;
     }
 
-    public void setMisStatus(Integer misStatus) {
+    public void setMisStatus(int misStatus) {
         this.misStatus = misStatus;
     }
 
@@ -96,27 +79,44 @@ public class Mission {
         this.endTime = endTime;
     }
 
-    public Integer getLevel() {
+    public int getLevel() {
         return level;
     }
 
-    public void setLevel(Integer level) {
+    public void setLevel(int level) {
         this.level = level;
     }
 
-    public Integer getProgress() {
+    public int getProgress() {
         return progress;
     }
 
-    public void setProgress(Integer progress) {
+    public void setProgress(int progress) {
         this.progress = progress;
     }
 
-    public Integer getFkMemId() {
+    public int getFkMemId() {
         return fkMemId;
     }
 
-    public void setFkMemId(Integer fkMemId) {
+    public void setFkMemId(int fkMemId) {
         this.fkMemId = fkMemId;
+    }
+
+    @Override
+    public String toString() {
+        return "Mission{" +
+                "misId=" + misId +
+                ", desc='" + desc + '\'' +
+                ", fkProjId=" + fkProjId +
+                ", addTime=" + addTime +
+                ", expireTime=" + expireTime +
+                ", misStatus=" + misStatus +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", level=" + level +
+                ", progress=" + progress +
+                ", fkMemId=" + fkMemId +
+                '}';
     }
 }

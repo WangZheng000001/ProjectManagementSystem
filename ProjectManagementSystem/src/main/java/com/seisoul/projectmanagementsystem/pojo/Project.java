@@ -4,32 +4,19 @@ import java.sql.Date;
 /*对应项目表*/
 
 public class Project {
-    private Integer projId;
+    private int projId;
     private String projPassword;
     private String projName;
     private Date addTime;
     private Date endTime;
-    private Integer projStatus;
-    private Integer fkMemId;
+    private int projStatus;
+    private int fkMemId;
 
-    @Override
-    public String toString() {
-        return "Project{" +
-                "projId=" + projId +
-                ", projPassword='" + projPassword + '\'' +
-                ", projName='" + projName + '\'' +
-                ", addTime=" + addTime +
-                ", endTime=" + endTime +
-                ", projStatus=" + projStatus +
-                ", fkMemId=" + fkMemId +
-                '}';
-    }
-
-    public Integer getProjId() {
+    public int getProjId() {
         return projId;
     }
 
-    public void setProjId(Integer projId) {
+    public void setProjId(int projId) {
         this.projId = projId;
     }
 
@@ -65,19 +52,32 @@ public class Project {
         this.endTime = endTime;
     }
 
-    public Integer getProjStatus() {
+    public int getProjStatus() {
         return projStatus;
     }
 
-    public void setProjStatus(Integer projStatus) {
+    public void setProjStatus(int projStatus) {
         this.projStatus = projStatus;
     }
 
-    public Integer getFkMemId() {
+    public int getFkMemId() {
         return fkMemId;
     }
 
-    public void setFkMemId(Integer fkMemId) {
+    public void setFkMemId(int fkMemId) {
         this.fkMemId = fkMemId;
+    }
+
+    @Override
+    public String toString() {
+        return "Project{" +
+                "projId=" + projId +
+                ", projPassword='" + projPassword + '\'' +
+                ", projName='" + projName + '\'' +
+                ", addTime=" + addTime +
+                ", endTime=" + endTime +
+                ", projStatus=" + projStatus +
+                ", fkMemId=" + fkMemId +
+                '}';
     }
 }

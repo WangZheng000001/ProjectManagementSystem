@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seisoul.projectmanagementsystem.mapper.MissionMapper">
+    <resultMap id="MemberResultMap" type="com.seisoul.projectmanagementsystem.pojo.Mission">
+        <result column="mis_id" property="misId"/>
+        <result column="desc" property="desc"/>
+        <result column="fk_proj_id" property="fkProjId"/>
+        <result column="add_time" property="addTime"/>
+        <result column="expire_time" property="expireTime"/>
+        <result column="mis_status" property="misStatus"/>
+        <result column="start_time" property="startTime"/>
+        <result column="end_time" property="endTime"/>
+        <result column="level" property="level"/>
+        <result column="progress" property="progress"/>
+        <result column="fk_mem_id" property="fkMemId"/>
+    </resultMap>
+    <select id="selectByIdAndPassword" resultMap="MemberResultMap">
+        select *from tb_mem
+        <where>
+            mem_id = #{memId}
+            and mem_password = #{memPassword};
+        </where>
+    </select>
+</mapper>

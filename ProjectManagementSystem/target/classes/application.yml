@@ -1,0 +1,10 @@
+mybatis:
+  type-aliases-package: com.seisoul.projectmanagementsystem.pojo
+  mapperLocations: classpath:com/seisoul/projectmanagementsystem/mapper/*.xml
+
+spring:
+  datasource:
+    driverClassname: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.2.100/project_management_system_schema?useSSL=false
+    username: ZC1
+    password: zhengchuang1

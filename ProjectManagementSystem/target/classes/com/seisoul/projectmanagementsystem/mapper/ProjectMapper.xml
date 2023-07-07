@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seisoul.projectmanagementsystem.mapper.ProjectMapper">
+    <resultMap id="ProjectResultMap" type="com.seisoul.projectmanagementsystem.pojo.Project">
+        <result column="proj_id" property="projId"/>
+        <result column="proj_password" property="projPassword"/>
+        <result column="proj_name" property="projName"/>
+        <result column="add_time" property="addTime"/>
+        <result column="end_time" property="endTime"/>
+        <result column="proj_status" property="projStatus"/>
+        <result column="fk_mem_id" property="fkMemId"/>
+    </resultMap>
+
+    <select id="selectByProjPassword" resultMap="ProjectResultMap">
+        select * from tb_proj
+        <where>
+            proj_password = #{projPassword};
+        </where>
+    </select>
+    <select id="selectByFkMemId" resultMap="ProjectResultMap">
+        select * from tb_proj
+        <where>
+            fk_mem_id = #{FkMemId};
+        </where>
+    </select>
+</mapper>

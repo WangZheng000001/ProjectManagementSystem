@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seisoul.projectmanagementsystem.mapper.MemberMapper">
+    <resultMap id="MemberResultMap" type="com.seisoul.projectmanagementsystem.pojo.Member">
+        <result column="mem_id" property="memId"/>
+        <result column="mem_password" property="memPassword"/>
+        <result column="mem_name" property="memName"/>
+        <result column="gender" property="gender"/>
+        <result column="leader" property="leader"/>
+    </resultMap>
+    <select id="selectByIdAndPassword" resultMap="MemberResultMap">
+        select *from tb_mem
+        <where>
+            mem_id = #{memId}
+            and mem_password = #{memPassword};
+        </where>
+    </select>
+    <select id="selectAll" resultMap="MemberResultMap">
+        select * from tb_mem
+    </select>
+    <select id="selectAllMemName" resultMap="MemberResultMap">
+        select mem_name from tb_mem
+    </select>
+    <select id="selectByMemName" resultMap="MemberResultMap">
+        select * from tb_mem
+        <where>
+            mem_name = #{memName}
+        </where>
+    </select>
+
+</mapper>

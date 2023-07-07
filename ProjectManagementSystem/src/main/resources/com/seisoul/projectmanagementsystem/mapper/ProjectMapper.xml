@@ -13,10 +13,20 @@
         <result column="fk_mem_id" property="fkMemId"/>
     </resultMap>
 
+    <!--=============================================================================================================-->
+
+    <!--查询-->
+
+    <!--查询方法:通过项目密匙查询 返回值:Map对象 封装的数据:全数据-->
     <select id="selectByProjPassword" resultMap="ProjectResultMap">
         select * from tb_proj
         <where>
             proj_password = #{projPassword};
         </where>
+    </select>
+
+    <!--查询方法:查询所有 返回值:Project对象 封装的数据:全数据-->
+    <select id="selectAllProject" resultType="com.seisoul.projectmanagementsystem.pojo.Project">
+        select * from tb_proj
     </select>
 </mapper>

@@ -1,17 +1,31 @@
 package com.seisoul.projectmanagementsystem.pojo;
 
 public class Member {
-   private int memId;
-   private String memPassword;
-   private String memName;
-   private int gender;
-   private int leader;
+    private Integer memId;
+    private String memPassword;
+    private String memName;
+    private Integer gender;
+    private Integer leader;
+    private Integer memStatus;
 
-    public int getMemId() {
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "memId=" + memId +
+                ", memPassword='" + memPassword + '\'' +
+                ", memName='" + memName + '\'' +
+                ", gender=" + gender +
+                ", leader=" + leader +
+                ", memStatus=" + memStatus +
+                '}';
+    }
+
+    public Integer getMemId() {
         return memId;
     }
 
-    public void setMemId(int memId) {
+    public void setMemId(Integer memId) {
         this.memId = memId;
     }
 
@@ -31,30 +45,27 @@ public class Member {
         this.memName = memName;
     }
 
-    public int getGender() {
+    public Integer getGender() {
         return gender;
     }
 
-    public void setGender(int gender) {
+    public void setGender(Integer gender) {
         this.gender = gender;
     }
 
-    public int getLeader() {
+    public Integer getLeader() {
         return leader;
     }
 
-    public void setLeader(int leader) {
+    public void setLeader(Integer leader) {
         this.leader = leader;
     }
 
-    @Override
-    public String toString() {
-        return "Member{" +
-                "memId=" + memId +
-                ", memPassword='" + memPassword + '\'' +
-                ", memName='" + memName + '\'' +
-                ", gender=" + gender +
-                ", leader=" + leader +
-                '}';
+    public Integer getMemStatus() {
+        return memStatus;
+    }
+
+    public void setMemStatus(Integer memStatus) {
+        this.memStatus = memStatus;
     }
 }

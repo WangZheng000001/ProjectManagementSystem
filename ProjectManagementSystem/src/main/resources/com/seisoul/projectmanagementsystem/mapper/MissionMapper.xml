@@ -16,11 +16,21 @@
         <result column="progress" property="progress"/>
         <result column="fk_mem_id" property="fkMemId"/>
     </resultMap>
+
+    <!--查询-->
+
+    <!--查询方法:通过id和密码查询任务 返回值:MemberResultMap 封装的数据:全数据-->
     <select id="selectByIdAndPassword" resultMap="MemberResultMap">
-        select *from tb_mem
+        select * from tb_mem
         <where>
             mem_id = #{memId}
             and mem_password = #{memPassword};
         </where>
+
+        <!--查询方法:查询所有 返回值:Mission对象 封装的属性:Mission表全数据-->
+
+    </select>
+    <select id="SelectAllMission" resultType="com.seisoul.projectmanagementsystem.pojo.Mission">
+        select * from tb_mis;
     </select>
 </mapper>

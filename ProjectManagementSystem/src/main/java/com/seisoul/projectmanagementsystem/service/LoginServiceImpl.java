@@ -22,7 +22,7 @@ public class LoginServiceImpl implements LoginService {
     private ProjectMapper projectMapper;
 
     @Override
-    public String SearchMemAndProj(Integer memId, String memPassword, String projPassword) {
+    public String searchMemAndProj(Integer memId, String memPassword, String projPassword) {
         /*设置项目密令*/
         Project project = projectMapper.selectByProjPassword(projPassword);
 

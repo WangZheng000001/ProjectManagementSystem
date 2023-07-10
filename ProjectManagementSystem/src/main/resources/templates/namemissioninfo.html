@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>プロジェクト組織進度管理システム</title>
+  <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            height: 60%;
+        }
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 20%;
+            padding: 10px;
+            border-right: 1px solid #ccc;
+        }
+        .sidebar button {
+            padding: 10px;
+            background-color: #ddd;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .sidebar button:hover {
+            background-color: #ccc;
+        }
+        .sidebar button.active {
+            background-color: #add8e6;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            width: 80%;
+            padding: 10px;
+            margin-left: 60px;
+        }
+        .content-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .content-item label {
+            margin-right: 10px;
+        }
+        .content-item select {
+            margin-right: 60px;
+        }
+        .table-container {
+            margin-top: 60px;
+            width: calc(80% - 60px);
+            align-self: flex-start;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<h1>プロジェクト組織進度管理システム</h1>
+<div class="container">
+  <div class="sidebar">
+    <button class="active">個人担当</button>
+    <button>案件管理</button>
+    <button>全体進度</button>
+  </div>
+  <div class="content">
+    <form action="/menbermission" method="POST">
+      <div class="content-item">
+        <label for="person-select">担当人:</label>
+        <select id="person-select" name="person">
+          <option value="Option1">Option 1</option>
+          <option value="Option2">Option 2</option>
+          <option value="Option3">Option 3</option>
+        </select>
+        <input type="submit" value="確認">
+      </div>
+    </form>
+    <div class="table-container">
+      <table th:if="${nameRecord}">
+        <thead>
+        <tr>
+          <th>misId</th>
+          <th>desc</th>
+          <th>fkProjId</th>
+          <th>addTime</th>
+          <th>expireTime</th>
+          <th>misStatus</th>
+          <th>startTime</th>
+          <th>endTime</th>
+          <th>level</th>
+          <th>progress</th>
+          <th>fkMemId</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="mission : ${nameRecord}">
+          <td th:text="${mission.misId}"></td>
+          <td th:text="${mission.desc}"></td>
+          <td th:text="${mission.fkProjId}"></td>
+          <td th:text="${mission.addTime}"></td>
+          <td th:text="${mission.expireTime}"></td>
+          <td th:text="${mission.misStatus}"></td>
+          <td th:text="${mission.startTime}"></td>
+          <td th:text="${mission.endTime}"></td>
+          <td th:text="${mission.level}"></td>
+          <td th:text="${mission.progress}"></td>
+          <td th:text="${mission.fkMemId}"></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+

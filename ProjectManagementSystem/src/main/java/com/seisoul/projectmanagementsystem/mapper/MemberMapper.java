@@ -13,6 +13,9 @@ public interface MemberMapper {
     //通过成员id查询
     Member selectByMemId(Member member);
 
+    //通过成员姓名查询(散装参数)
+    Member selectByMemName(String memName);
+
     //通过成员姓名查询
     Member selectByMemName(Member member);
 

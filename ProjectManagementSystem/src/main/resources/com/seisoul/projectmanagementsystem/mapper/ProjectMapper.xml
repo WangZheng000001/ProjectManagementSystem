@@ -29,4 +29,10 @@
     <select id="selectAllProject" resultType="com.seisoul.projectmanagementsystem.pojo.Project">
         select * from tb_proj
     </select>
+    <select id="selectByFkMemId" resultMap="ProjectResultMap">
+        select * from tb_proj
+        <where>
+            fk_mem_id = #{FkMemId};
+        </where>
+    </select>
 </mapper>

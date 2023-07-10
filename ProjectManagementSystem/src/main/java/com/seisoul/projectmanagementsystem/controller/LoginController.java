@@ -1,52 +1,36 @@
 package com.seisoul.projectmanagementsystem.controller;
-import com.seisoul.projectmanagementsystem.mapper.MemberMapper;
-import com.seisoul.projectmanagementsystem.mapper.ProjectMapper;
-import com.seisoul.projectmanagementsystem.pojo.Member;
-import com.seisoul.projectmanagementsystem.pojo.Project;
-import io.micrometer.common.util.StringUtils;
+
+import com.seisoul.projectmanagementsystem.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class LoginController {
+
     @Autowired
-    private MemberMapper memberMapper;
-    @Autowired
-    private ProjectMapper projectMapper;
+    private LoginService loginService;
 
     @RequestMapping("/membermission")
     public String membermission(@RequestParam("memId") int memId,
-                        @RequestParam("memPassword") String memPassword,
-                        @RequestParam("projectPassword")String projectPassword) {
-        /*设置项目密令*/
-        Project project = projectMapper.selectByProjPassword(projectPassword);
+                                @RequestParam("memPassword") String memPassword,
+                                @RequestParam("projectPassword") String projPassword) { //这条代码还是得写在controller里
 
-        /*String changePassword = "1234";
-        if (!StringUtils.isEmpty(projectPassword) && changePassword.equals(projectPassword)) {
-            Member member = memberMapper.selectByIdAndPassword(memId, memPassword);
-            if(member!=null) {
-                return member.toString();
-            }else return "memId or memPassword is wrong";
-        }else return "projectPassword is wrong";
-        }*/
-        if(project != null){
-            Member member = memberMapper.selectByIdAndPassword(memId, memPassword);
-            if(member!=null) {
-                return "missioninfo";
-            }else return "idwrong";
-        }else return "projectPasswordwrong";
+        String result = loginService.SearchMemAndProj(memId, memPassword, projPassword);
+        System.out.println("对象result的数据为" + result);//在控制台返回result内容
+        return result;
     }
-    @RequestMapping("/menbermission")
-    @ResponseBody
-    public String proj(@RequestParam("memName")String memName){
-        System.out.println(memName);
-        Member member = memberMapper.selectByMemName(memName);
-        System.out.println(member.getMemId());
-        int memId = member.getMemId();
-        Project project = projectMapper.selectByFkMemId(memId);
-        return project.toString();
-    }
+
+    /*待施工*/
+//    @RequestMapping("/menbermission")
+//    @ResponseBody
+//    public String proj(@RequestParam("memName") String memName) {   //这条代码还是得写在controller里
+//        System.out.println(memName);//返回给控制台
+//        Member member = memberMapper.selectByMemName(memName);//返回member对象
+//        System.out.println(member.getMemId());//返回给控制台
+//        int memId = member.getMemId();//取得member中的id
+//        Project project = projectMapper.selectByFkMemId(memId);
+//        return project.toString();
+//    }
 }

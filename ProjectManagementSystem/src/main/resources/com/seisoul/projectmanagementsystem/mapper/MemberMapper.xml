@@ -29,10 +29,10 @@
     </select>
 
     <!--查询方法:通过成员姓名查询 返回值:Member对象 封装的数据:全数据-->
-    <select id="selectByMemName" resultType="com.seisoul.projectmanagementsystem.pojo.Member">
+    <select id="selectByMemName" resultMap="MemberResultMap">
         select * from tb_mem
         <where>
-            mem_name like %{#memName}%
+            mem_name = #{memName}
 
         </where>
     </select>
@@ -46,7 +46,7 @@
     </select>
 
     <!--查询方法:通过成员状态 返回值:Member对象 封装的数据:全数据-->
-    <select id="selectByMemStatus" resultType="com.seisoul.projectmanagementsystem.pojo.Member">
+    <select id="selectByMemStatus" resultMap="MemberResultMap">
         select * from tb_mem
         <where>
             mem_status = #{memStatus};

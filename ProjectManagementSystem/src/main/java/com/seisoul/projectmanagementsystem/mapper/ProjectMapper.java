@@ -9,6 +9,8 @@ public interface ProjectMapper {
 
     //查询所有项目
     Project selectAllProject();
+    //通过成员id查询项目(散装参数)
+    Project selectByFkMemId(int FkMemId);
 
     //通过成员id查询项目
     //Project selectByMemId(Member member);

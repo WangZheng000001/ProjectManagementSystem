@@ -1,5 +1,11 @@
 package com.seisoul.projectmanagementsystem.pojo;
 
+/**
+ * @ Author changcyril40
+ * @ Description 这是一个实体类,类里声明了数据库里tb_mem的属性,一一对应的声明了表格tb_mem的所有的属性
+ * @ Date 2023-07-2023/07/10 14:59
+ */
+
 public class Member {
     private Integer memId;
     private String memPassword;

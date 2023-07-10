@@ -33,4 +33,10 @@
     <select id="SelectAllMission" resultType="com.seisoul.projectmanagementsystem.pojo.Mission">
         select * from tb_mis;
     </select>
+    <select id="selectByFkMemId" resultMap="MemberResultMap">
+        select * from tb_mis
+        <where>
+            fk_mem_id = #{fkMemId}
+        </where>
+    </select>
 </mapper>

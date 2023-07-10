@@ -12,12 +12,12 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
-    @RequestMapping("/membermission")
-    public String membermission(@RequestParam("memId") int memId,
+    @RequestMapping("/memberinfo")
+    public String memberinfo(@RequestParam("memId") int memId,
                                 @RequestParam("memPassword") String memPassword,
                                 @RequestParam("projectPassword") String projPassword) { //这条代码还是得写在controller里
 
-        String result = loginService.SearchMemAndProj(memId, memPassword, projPassword);
+        String result = loginService.searchMemAndProj(memId, memPassword, projPassword);
         System.out.println("对象result的数据为" + result);//在控制台返回result内容
         return result;
     }

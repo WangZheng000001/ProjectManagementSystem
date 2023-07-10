@@ -3,6 +3,8 @@ package com.seisoul.projectmanagementsystem.mapper;
 import com.seisoul.projectmanagementsystem.pojo.Project;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface ProjectMapper {
     Project selectByProjPassword(String projPassword);
@@ -10,7 +12,8 @@ public interface ProjectMapper {
     //查询所有项目
     Project selectAllProject();
     //通过成员id查询项目(散装参数)
-    Project selectByFkMemId(int FkMemId);
+    /*Project selectByFkMemId(int fkMemId);*/
+    List<Project>selectByFkMemId(int fkMemId);
 
     //通过成员id查询项目
     //Project selectByMemId(Member member);

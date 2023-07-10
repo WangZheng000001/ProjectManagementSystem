@@ -8,7 +8,7 @@ package com.seisoul.projectmanagementsystem.service;
 
 public interface LoginService {
 
-    String SearchMemAndProj(Integer memId, String memPassword, String projPassword);
+    String searchMemAndProj(Integer memId, String memPassword, String projPassword);
 
 
 }

@@ -32,7 +32,7 @@
     <select id="selectByFkMemId" resultMap="ProjectResultMap">
         select * from tb_proj
         <where>
-            fk_mem_id = #{FkMemId};
+            fk_mem_id = #{fkMemId};
         </where>
     </select>
 </mapper>

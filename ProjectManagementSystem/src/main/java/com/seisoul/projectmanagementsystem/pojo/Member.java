@@ -1,17 +1,34 @@
 package com.seisoul.projectmanagementsystem.pojo;
 
+import jakarta.persistence.*;
+
 /**
  * @ Author changcyril40
  * @ Description 这是一个实体类,类里声明了数据库里tb_mem的属性,一一对应的声明了表格tb_mem的所有的属性
  * @ Date 2023-07-2023/07/10 14:59
  */
 
+@Entity
+@Table(name = "tb_mem")
 public class Member {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "memId")
     private Integer memId;
+
+    @Column(name = "memPassword")
     private String memPassword;
+
+    @Column(name = "memName")
     private String memName;
+
+    @Column(name = "gender")
     private Integer gender;
+
+    @Column(name = "leader")
     private Integer leader;
+
+    @Column(name = "memStatus")
     private Integer memStatus;
 
 

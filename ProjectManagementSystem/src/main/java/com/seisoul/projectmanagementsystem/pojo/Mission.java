@@ -3,17 +3,17 @@ package com.seisoul.projectmanagementsystem.pojo;
 import java.sql.Date;
 /*对应任务表*/
 public class Mission {
-    private int misId;
+    private Integer misId;
     private String desc;
-    private int fkProjId;
+    private Integer fkProjId;
     private Date addTime;
     private Date expireTime;
-    private int misStatus;
+    private Integer misStatus;
     private Date startTime;
     private Date endTime;
-    private int level;
-    private int progress;
-    private int fkMemId;
+    private Integer level;
+    private Integer progress;
+    private Integer fkMemId;
 
     public int getMisId() {
         return misId;

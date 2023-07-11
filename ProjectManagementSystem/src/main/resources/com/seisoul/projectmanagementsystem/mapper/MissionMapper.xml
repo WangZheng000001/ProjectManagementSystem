@@ -19,7 +19,7 @@
 
     <!--查询-->
 
-    <!--查询方法:通过id和密码查询任务 返回值:MemberResultMap 封装的数据:全数据-->
+    <!--查询方法:通过id和密码查询任务 返回值:MemberResultMap 返回数据:对应id和命名的map集合-->
     <select id="selectByIdAndPassword" resultMap="MemberResultMap">
         select * from tb_mem
         <where>
@@ -30,13 +30,42 @@
         <!--查询方法:查询所有 返回值:Mission对象 封装的属性:Mission表全数据-->
 
     </select>
-    <select id="SelectAllMission" resultType="com.seisoul.projectmanagementsystem.pojo.Mission">
+
+    <!--方法名:查询所有任务 返回值:Mission对象 返回数据:表格tb_mis的全部行和全部列-->
+    <select id="selectAllMission" resultType="com.seisoul.projectmanagementsystem.pojo.Mission">
         select * from tb_mis;
     </select>
-    <select id="selectByFkMemId" resultMap="MemberResultMap">
+
+
+<!--    <select id="selectByFkMemId" resultMap="MemberResultMap">-->
+<!--        select * from tb_mis-->
+<!--        <where>-->
+<!--            fk_mem_id = #{fkMemId}-->
+<!--        </where>-->
+<!--    </select>-->
+
+    <!--方法名:通过成员id查询任务 返回值:Mission对象 返回数据:指定成员id的任务数据-->
+    <select id="selectByFkMemId" resultType="com.seisoul.projectmanagementsystem.pojo.Mission">
         select * from tb_mis
         <where>
             fk_mem_id = #{fkMemId}
         </where>
+    </select>
+
+    <!--方法名:通过任务id查询任务 返回值:Mission对象 返回数据:指定任务id的任务数据-->
+    <select id="selectByMisId" resultType="com.seisoul.projectmanagementsystem.pojo.Mission">
+        select * from tb_mis
+        <where>
+            mis_id = #{misId}
+        </where>
+    </select>
+
+    <!--方法名:通过项目id查询任务 返回值:Mission对象 返回数据:指定项目id的任务数据-->
+    <select id="selectByFkProjId" resultType="com.seisoul.projectmanagementsystem.pojo.Mission">
+        select * from tb_mis
+        <where>
+            fk_proj_id = #{fkProjId}
+        </where>
+
     </select>
 </mapper>

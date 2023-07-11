@@ -17,22 +17,69 @@
 
     <!--查询-->
 
-    <!--查询方法:通过项目密匙查询 返回值:Map对象 封装的数据:全数据-->
-    <select id="selectByProjPassword" resultMap="ProjectResultMap">
-        select * from tb_proj
-        <where>
-            proj_password = #{projPassword};
-        </where>
-    </select>
+    <!--    &lt;!&ndash;方法名:通过项目密匙查询 返回值:Map对象 封装的数据:全数据&ndash;&gt;-->
+    <!--    <select id="selectByProjPassword" resultMap="ProjectResultMap">-->
+    <!--        select * from tb_proj-->
+    <!--        <where>-->
+    <!--            proj_password = #{projPassword};-->
+    <!--        </where>-->
+    <!--    </select>-->
 
-    <!--查询方法:查询所有 返回值:Project对象 封装的数据:全数据-->
+    <!--方法名:查询所有 返回值:Project对象 返回数据:tb_proj的全部行全部列-->
     <select id="selectAllProject" resultType="com.seisoul.projectmanagementsystem.pojo.Project">
         select * from tb_proj
     </select>
-    <select id="selectByFkMemId" resultMap="ProjectResultMap">
+
+    <!--    &lt;!&ndash;方法名:通过成员id查询项目 返回值:Map 返回数据:指定成员id的项目&ndash;&gt;-->
+    <!--    <select id="selectByFkMemId" resultMap="ProjectResultMap">-->
+    <!--        select * from tb_proj-->
+    <!--        <where>-->
+    <!--            fk_mem_id = #{fkMemId};-->
+    <!--        </where>-->
+    <!--    </select>-->
+
+    <!--方法名:通过成员id查询项目 返回值:Project对象 返回数据:指定成员id的项目-->
+    <select id="selectByFkMemId" resultType="com.seisoul.projectmanagementsystem.pojo.Project">
         select * from tb_proj
         <where>
-            fk_mem_id = #{fkMemId};
+            fk_mem_id = #{fkMemId}
         </where>
     </select>
+
+    <!--方法名:通过项目id查询项目 返回值:Project对象 返回数据:指定项目id的项目-->
+    <select id="selectByProjId" resultType="com.seisoul.projectmanagementsystem.pojo.Project">
+        select * from tb_proj
+        <where>
+            proj_id = #{projId}
+        </where>
+    </select>
+
+    <!--方法名:通过项目密匙查询项目 返回值:Project对象 返回数据:指定项目密匙的项目-->
+    <select id="selectByProjPassword" resultType="com.seisoul.projectmanagementsystem.pojo.Project">
+        select * from tb_proj
+        <where>
+            proj_password = #{projPassword}
+        </where>
+
+    </select>
+
+    <!--方法名:通过项目名称查询项目 返回值:Project对象 返回数据:指定项目名称的项目-->
+    <select id="selectByProjName" resultType="com.seisoul.projectmanagementsystem.pojo.Project">
+        select * from tb_proj
+        <where>
+            proj_name like #{projName}
+        </where>
+
+    </select>
+
+    <!--方法名:通过项目状态查询项目 返回值:Project对象 返回数据:指定项目名称的项目-->
+    <select id="selectByProjStatus" resultType="com.seisoul.projectmanagementsystem.pojo.Project">
+        select * from tb_proj
+        <where>
+            proj_status = #{projStatus}
+        </where>
+
+    </select>
+
+
 </mapper>

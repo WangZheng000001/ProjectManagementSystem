@@ -6,6 +6,9 @@ import com.seisoul.projectmanagementsystem.pojo.Member;
 import com.seisoul.projectmanagementsystem.pojo.Project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+
+import java.util.List;
 
 /**
  * @ Author YOSHIGAWA
@@ -29,9 +32,20 @@ public class LoginServiceImpl implements LoginService {
         if (project != null) {
             Member member = memberMapper.selectByIdAndPassword(memId, memPassword);
             if (member != null) {
+                //用Model返回用户姓名
                 return "missioninfo";
             } else return "idwrong";
         } else return "projectPasswordwrong";
 
+    }
+    @Override
+    public List<String>selectAllMemberName(){
+        List<String> members = memberMapper.selectAllMemberName();
+        return members;
+    }
+    @Override
+    public List<Member>selectAllMember(){
+        List<Member> members = memberMapper.selectAllMember();
+        return members;
     }
 }

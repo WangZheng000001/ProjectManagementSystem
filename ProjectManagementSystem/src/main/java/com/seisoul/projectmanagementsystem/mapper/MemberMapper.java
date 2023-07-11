@@ -3,12 +3,15 @@ package com.seisoul.projectmanagementsystem.mapper;
 import com.seisoul.projectmanagementsystem.pojo.Member;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface MemberMapper {
     Member selectByIdAndPassword(int memId,String memPassword);
 
     //查询所有成员
-    Member selectAllMember();
+    List<Member> selectAllMember();
+    List<String>selectAllMemberName();
 
     //通过成员id查询
     Member selectByMemId(Member member);

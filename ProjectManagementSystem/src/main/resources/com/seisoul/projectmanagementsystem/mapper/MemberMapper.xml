@@ -16,12 +16,12 @@
     <!--查询-->
 
     <!--查询方法:查询所有 返回值:Member对象 封装的数据:全数据-->
-    <select id="selectAllMember" resultType="com.seisoul.projectmanagementsystem.pojo.Member">
+    <select id="selectAllMember" resultMap="MemberResultMap">
         select * from tb_mem;
     </select>
 
     <!--查询方法:通过成员id查询 返回值:Member对象 封装的数据:全数据-->
-    <select id="selectByMemId" resultType="com.seisoul.projectmanagementsystem.pojo.Member">
+    <select id="selectByMemId" resultMap="MemberResultMap">
         select * from tb_mem
         <where>
             id = #{id}
@@ -61,6 +61,9 @@
             mem_id = #{memId}
             and mem_password = #{memPassword};
         </where>
+    </select>
+    <select id="selectAllMemberName" resultMap="MemberResultMap">
+        select mem_name from tb_mem
     </select>
 
 

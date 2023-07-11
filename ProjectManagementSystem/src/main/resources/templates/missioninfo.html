@@ -75,9 +75,7 @@
             <div class="content-item">
                 <label for="memName">担当人:</label>
                 <select id="memName" name="memName">
-                    <option value="123">123</option>
-                    <option value="大锤">大锤</option>
-                    <option value="鸟蛋">鸟蛋</option>
+                    <option th:each="members:${members}" th:value="${members.memName}" th:text="${members.memName}"></option>
                 </select>
                 <input type="submit" value="確認">
             </div>

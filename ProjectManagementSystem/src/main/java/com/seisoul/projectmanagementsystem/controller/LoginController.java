@@ -1,10 +1,14 @@
 package com.seisoul.projectmanagementsystem.controller;
 
+import com.seisoul.projectmanagementsystem.pojo.Member;
 import com.seisoul.projectmanagementsystem.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 public class LoginController {
@@ -14,10 +18,14 @@ public class LoginController {
 
     @RequestMapping("/memberinfo")
     public String memberinfo(@RequestParam("memId") int memId,
-                                @RequestParam("memPassword") String memPassword,
-                                @RequestParam("projectPassword") String projPassword) { //这条代码还是得写在controller里
+                             @RequestParam("memPassword") String memPassword,
+                             @RequestParam("projectPassword") String projPassword, Model model) { //这条代码还是得写在controller里
 
         String result = loginService.searchMemAndProj(memId, memPassword, projPassword);
+        /*List<String> members = loginService.selectAllMemberName();*/
+        List<Member> members = loginService.selectAllMember();
+        System.out.println(members);
+        model.addAttribute("members",members);
         System.out.println("对象result的数据为" + result);//在控制台返回result内容
         return result;
     }

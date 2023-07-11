@@ -18,6 +18,7 @@ public class NameSelectController {
     private NameSelectService nameSelectService;
     @RequestMapping("/menbermission")
     public String menbermission(@RequestParam("memName")String memName, Model model){
+        System.out.println("memname是"+memName);
         List<Mission> nameRecord = nameSelectService.projectAllByName(memName);
         System.out.println(nameRecord.toString());
         model.addAttribute("nameRecord",nameRecord);

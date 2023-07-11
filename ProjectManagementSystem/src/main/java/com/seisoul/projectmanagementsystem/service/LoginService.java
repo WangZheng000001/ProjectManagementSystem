@@ -1,5 +1,9 @@
 package com.seisoul.projectmanagementsystem.service;
 
+import com.seisoul.projectmanagementsystem.pojo.Member;
+
+import java.util.List;
+
 /**
  * @ Author YOSHIGAWA
  * @ Description 这是service层的一个接口类,接口里有抽象方法,方法包括查找"成员和项目"
@@ -9,6 +13,8 @@ package com.seisoul.projectmanagementsystem.service;
 public interface LoginService {
 
     String searchMemAndProj(Integer memId, String memPassword, String projPassword);
+    List<String> selectAllMemberName();
+    List<Member>selectAllMember();
 
 
 }

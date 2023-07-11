@@ -1,6 +1,9 @@
 mybatis:
   type-aliases-package: com.seisoul.projectmanagementsystem.pojo
-  mapperLocations: classpath:com/seisoul/projectmanagementsystem/mapper/*.xml
+  mapperLocations: classpath:com/seisoul/projectmanagementsystem/mapper/*.xml # 配置mapper路径
+  configuration:
+    map-underscore-to-camel-case: true # 开启自动匹配大小写,就使用驼峰命名了
+
 
 spring:
   datasource:

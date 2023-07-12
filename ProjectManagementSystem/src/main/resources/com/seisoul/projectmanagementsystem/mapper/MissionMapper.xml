@@ -68,4 +68,24 @@
         </where>
 
     </select>
+
+    <!--方法名:通过任务添加时间和任务状态查询任务 返回值:Mission对象 返回数据:指定条件的任务数据-->
+    <select id="selectByAddTimeAndEndTimeAndMisStatus" resultType="com.seisoul.projectmanagementsystem.pojo.Mission">
+        select * from tb_mis
+        <where>
+            <choose>
+                <when test="addTime != null">
+                    add_time &gt;= #{addTime},
+                </when>
+                <when test="endTime != null">
+                    end_time &lt;= #{endTime},
+                </when>
+                <when test="misStatus != null">
+                    mis_status = #{misStatus},
+                </when>
+            </choose>
+        </where>
+
+    </select>
+
 </mapper>

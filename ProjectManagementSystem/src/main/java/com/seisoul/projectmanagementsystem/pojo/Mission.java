@@ -1,25 +1,36 @@
 package com.seisoul.projectmanagementsystem.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.sql.Date;
 /*对应任务表*/
 public class Mission {
     private Integer misId;
     private String desc;
     private Integer fkProjId;
+
+    @JsonFormat(pattern = "yyyy-mm-dd")
     private Date addTime;
+
+    @JsonFormat(pattern = "yyyy-mm-dd")
     private Date expireTime;
+
     private Integer misStatus;
+
+    @JsonFormat(pattern = "yyyy-mm-dd")
     private Date startTime;
+
+    @JsonFormat(pattern = "yyyy-mm-dd")
     private Date endTime;
     private Integer level;
     private Integer progress;
     private Integer fkMemId;
 
-    public int getMisId() {
+    public Integer getMisId() {
         return misId;
     }
 
-    public void setMisId(int misId) {
+    public void setMisId(Integer misId) {
         this.misId = misId;
     }
 
@@ -31,11 +42,11 @@ public class Mission {
         this.desc = desc;
     }
 
-    public int getFkProjId() {
+    public Integer getFkProjId() {
         return fkProjId;
     }
 
-    public void setFkProjId(int fkProjId) {
+    public void setFkProjId(Integer fkProjId) {
         this.fkProjId = fkProjId;
     }
 
@@ -55,11 +66,11 @@ public class Mission {
         this.expireTime = expireTime;
     }
 
-    public int getMisStatus() {
+    public Integer getMisStatus() {
         return misStatus;
     }
 
-    public void setMisStatus(int misStatus) {
+    public void setMisStatus(Integer misStatus) {
         this.misStatus = misStatus;
     }
 
@@ -79,27 +90,27 @@ public class Mission {
         this.endTime = endTime;
     }
 
-    public int getLevel() {
+    public Integer getLevel() {
         return level;
     }
 
-    public void setLevel(int level) {
+    public void setLevel(Integer level) {
         this.level = level;
     }
 
-    public int getProgress() {
+    public Integer getProgress() {
         return progress;
     }
 
-    public void setProgress(int progress) {
+    public void setProgress(Integer progress) {
         this.progress = progress;
     }
 
-    public int getFkMemId() {
+    public Integer getFkMemId() {
         return fkMemId;
     }
 
-    public void setFkMemId(int fkMemId) {
+    public void setFkMemId(Integer fkMemId) {
         this.fkMemId = fkMemId;
     }
 

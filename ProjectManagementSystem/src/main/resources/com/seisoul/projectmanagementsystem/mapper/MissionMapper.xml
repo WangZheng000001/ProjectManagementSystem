@@ -45,7 +45,15 @@
 <!--    </select>-->
 
     <!--方法名:通过成员id查询任务 返回值:Mission对象 返回数据:指定成员id的任务数据-->
-    <select id="selectByFkMemId" resultType="com.seisoul.projectmanagementsystem.pojo.Mission">
+    <select id="selectByFkMemId" parameterType="int" resultType="com.seisoul.projectmanagementsystem.pojo.Mission">
+        select * from tb_mis
+        <where>
+            fk_mem_id = #{fkMemId}
+        </where>
+    </select>
+
+    <!--方法名:通过成员id查询任务 返回值:Mission对象 返回数据:指定成员id的任务数据-->
+    <select id="selectByMisFkMemId" resultType="com.seisoul.projectmanagementsystem.pojo.Mission">
         select * from tb_mis
         <where>
             fk_mem_id = #{fkMemId}
@@ -66,6 +74,14 @@
         <where>
             fk_proj_id = #{fkProjId}
         </where>
+    </select>
 
+    <!--方法名:通过成员id查询任务 返回值:MissionDto对象 返回数据:指定成员id的任务数据,对应dto层-->
+    <select id="selectByFkMemIdMissionDtos" resultType="com.seisoul.projectmanagementsystem.dto.MissionDto">
+        select mis_id,`desc`,add_time,expire_time,mis_status,start_time,end_time,progress
+        from tb_mis
+        <where>
+            fk_mem_id = #{fkMemId}
+        </where>
     </select>
 </mapper>

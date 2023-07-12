@@ -1,6 +1,6 @@
 package com.seisoul.projectmanagementsystem.mapper;
+import com.seisoul.projectmanagementsystem.dto.MissionDto;
 import com.seisoul.projectmanagementsystem.pojo.Mission;
-import com.seisoul.projectmanagementsystem.pojo.Project;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -21,6 +21,9 @@ public interface MissionMapper {
     List<Mission> selectByFkMemId(int fkMemId);
 
     //方法名:通过成员id查询任务 返回值:Mission对象的集合 方法形参:Mission对象
-    List<Mission> selectByFkMemId(Mission mission);
+    List<Mission> selectByMisFkMemId(Mission mission);
+
+    //方法名:通过成员id查询任务 返回值:MissionDto对象的集合 方法形参:Mission对象
+    List<MissionDto> selectByFkMemIdMissionDtos(Mission mission);
 
 }

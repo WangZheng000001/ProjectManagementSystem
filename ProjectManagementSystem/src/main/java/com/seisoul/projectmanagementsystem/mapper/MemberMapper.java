@@ -2,6 +2,7 @@ package com.seisoul.projectmanagementsystem.mapper;
 
 import com.seisoul.projectmanagementsystem.pojo.Member;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -28,5 +29,7 @@ public interface MemberMapper {
     //方法名:通过成员状态 返回值:Member对象的集合 方法形参:Member对象
     List<Member> selectByMemStatus(Member member);
 
+    @Select("SELECT * FROM tb_mem")
+    List<Member> getAllMembers();
 
 }

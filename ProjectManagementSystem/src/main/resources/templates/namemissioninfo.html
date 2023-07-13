@@ -75,6 +75,18 @@
             border: 1px solid #ccc;
         }
     </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+        $.get("/api/members", function(data) {
+            var select = $("#memName");
+            select.empty();
+            $.each(data, function(index, member) {
+                select.append('<option value="' + member.memName + '">' + member.memName + '</option>');
+            });
+        });
+    });
+    </script>
 </head>
 <body>
 <h1>プロジェクト組織進度管理システム</h1>
@@ -87,11 +99,8 @@
   <div class="content">
     <form action="/menbermission" method="POST">
       <div class="content-item">
-        <label for="person-select">担当人:</label>
-        <select id="person-select" name="person">
-          <option value="Option1">Option 1</option>
-          <option value="Option2">Option 2</option>
-          <option value="Option3">Option 3</option>
+        <label for="memName">担当人:</label>
+        <select id="memName" name="memName">
         </select>
         <input type="submit" value="確認">
       </div>
@@ -100,7 +109,7 @@
       <table th:if="${nameRecord}">
         <thead>
         <tr>
-          <th>misId</th>
+          <th>misIdidid</th>
           <th>desc</th>
           <th>fkProjId</th>
           <th>addTime</th>

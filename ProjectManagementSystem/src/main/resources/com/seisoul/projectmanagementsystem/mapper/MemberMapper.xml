@@ -3,13 +3,13 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.seisoul.projectmanagementsystem.mapper.MemberMapper">
-    <resultMap id="MemberResultMap" type="com.seisoul.projectmanagementsystem.pojo.Member">
+    <!--<resultMap id="MemberResultMap" type="com.seisoul.projectmanagementsystem.pojo.Member">
         <result column="mem_id" property="memId"/>
         <result column="mem_password" property="memPassword"/>
         <result column="mem_name" property="memName"/>
         <result column="gender" property="gender"/>
         <result column="leader" property="leader"/>
-    </resultMap>
+    </resultMap>-->
 
     <!--=======================================================================================-->
 
@@ -29,7 +29,7 @@
     </select>
 
     <!--查询方法:通过成员姓名查询 返回值:Member对象 封装的数据:全数据-->
-    <select id="selectByMemName" resultMap="MemberResultMap">
+    <select id="selectByMemName" resultType="com.seisoul.projectmanagementsystem.pojo.Member">
         select * from tb_mem
         <where>
             mem_name = #{memName}
@@ -46,7 +46,7 @@
     </select>
 
     <!--查询方法:通过成员状态 返回值:Member对象 封装的数据:全数据-->
-    <select id="selectByMemStatus" resultMap="MemberResultMap">
+    <select id="selectByMemStatus" resultType="com.seisoul.projectmanagementsystem.pojo.Member">
         select * from tb_mem
         <where>
             mem_status = #{memStatus};
@@ -55,7 +55,7 @@
 
 
     <!--通过id和密码查询所有-->
-    <select id="selectByIdAndPassword" resultMap="MemberResultMap">
+    <select id="selectByIdAndPassword" resultType="com.seisoul.projectmanagementsystem.pojo.Member">
         select * from tb_mem
         <where>
             mem_id = #{memId}

@@ -6,31 +6,37 @@
         body {
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             height: 100vh;
             background-color: #f0f0f0;
             font-family: Arial, sans-serif;
+            padding-top: 20px;
         }
         h1 {
-            margin-bottom: 20px;
+            margin-top: 20px;
+            margin-bottom: 30px;
         }
         .container {
             display: flex;
+            flex-direction: column;
             justify-content: space-between;
             width: 80%;
-            height: 60%;
+            height: 40px;
         }
         .sidebar {
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 20%;
             padding: 10px;
-            border-right: 1px solid #ccc;
+            justify-content: space-between;
+            width: 100%;
         }
         .sidebar button {
             padding: 10px;
+            font-size: 18px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             background-color: #ddd;
             cursor: pointer;
             transition: background-color 0.3s ease;
@@ -47,7 +53,8 @@
             justify-content: flex-start;
             width: 80%;
             padding: 10px;
-            margin-left: 60px;   /* Increase left margin */
+            margin-top: 10px;
+            align-items: flex-start;
         }
         .content-item {
             display: flex;
@@ -55,7 +62,7 @@
             margin-bottom: 20px;
         }
         .content-item label {
-            margin-right: 10px;  /* Increase right margin */
+            margin-right: 10px;
         }
         .content-item select {
             margin-right: 60px;

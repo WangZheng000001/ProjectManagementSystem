@@ -88,8 +88,21 @@
         $.get("/api/members", function(data) {
             var select = $("#memName");
             select.empty();
+            select.append('<option value="" selected disabled>请选择员工</option>'); // 添加空选项
             $.each(data, function(index, member) {
                 select.append('<option value="' + member.memName + '">' + member.memName + '</option>');
+            });
+        });
+    });
+    </script>
+  <script>
+    $(document).ready(function() {
+        $.get("/api/missions", function(data) {
+            var select = $("#level");
+            select.empty();
+            select.append('<option value="" selected disabled>请选择状态</option>'); // 添加空选项
+            $.each(data, function(index, mission) {
+                select.append('<option value="' + mission.level + '">' + mission.level + '</option>');
             });
         });
     });
@@ -104,11 +117,18 @@
     <button>全体進度</button>
   </div>
   <div class="content">
-    <form action="/menbermission" method="POST">
+    <form action="/menbermission1" method="POST">
       <div class="content-item">
         <label for="memName">担当人:</label>
         <select id="memName" name="memName">
         </select>
+        <label for="level">项目等级</label>
+        <select id="level" name="level">
+        </select>
+        <label for="startTime">开始时间:</label>
+        <input class="date-input" type="date" id="startTime" name="startTime" placeholder="開始時間">
+        <label for="endTime">结束时间:</label>
+        <input class="date-input" type="date" id="endTime" name="endTime" placeholder="締め切り時間">
         <input type="submit" value="確認">
       </div>
     </form>

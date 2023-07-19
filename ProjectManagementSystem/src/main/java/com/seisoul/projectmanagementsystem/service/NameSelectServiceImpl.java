@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.Date;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -20,11 +22,48 @@ public class NameSelectServiceImpl implements NameSelectService{
     private ProjectMapper projectMapper;
     @Autowired
     private MissionMapper missionMapper;
+
+
+     @Override
+        public List<Mission> projectAllByName(String memName){
+            Member member = memberMapper.selectByMemName(memName);
+            Integer memId = member.getMemId();
+            List<Mission> missions = missionMapper.selectByFkMemId(memId);
+            return missions;
+        }
     @Override
-    public List<Mission> projectAllByName(String memName){
-        Member member = memberMapper.selectByMemName(memName);
-        Integer memId = member.getMemId();
-        List<Mission> missions = missionMapper.selectByFkMemId(memId);
+    public List<Mission> projectAllByAnyWay(String memName, Date startTime,Date endTime,Integer level){
+        Mission mission = new Mission();
+        Integer fKMemId = null;
+        if(memName != null && memName != "") {
+            Member member = memberMapper.selectByMemName(memName);
+            fKMemId = member.getMemId();
+            mission.setFkMemId(fKMemId);
+            System.out.println(mission.getFkMemId());
+        }else if(memName == "" || memName == null){
+            mission.setFkMemId(null);
+        }
+        if(startTime != null) {
+            mission.setStartTime(startTime);
+        }
+        if(endTime != null) {
+            mission.setEndTime(endTime);
+        }
+        if(level != null) {
+            mission.setLevel(level);
+            System.out.println(mission);
+        }
+        List<Mission> missions = missionMapper.selectByAnyWay(mission);
         return missions;
     }
+   /* @Override
+    public List<Mission>projectAllByAnyWay(String memName, Date startTime, Date endTime, Integer lever){
+        Member member = memberMapper.selectByMemName(memName);
+        Integer fkMemId = member.getMemId();
+        List<Mission> missions = missionMapper.selectByAnyWay(fkMemId, startTime, endTime, lever);
+        System.out.println(missions);
+        return missions;
+
+    }*/
+
 }

@@ -88,7 +88,7 @@
         $.get("/api/members", function(data) {
             var select = $("#memName");
             select.empty();
-            select.append('<option value="" selected disabled>请选择员工</option>'); // 添加空选项
+            select.append('<option value="" selected>请选择员工</option>'); // 添加空选项
             $.each(data, function(index, member) {
                 select.append('<option value="' + member.memName + '">' + member.memName + '</option>');
             });
@@ -100,7 +100,7 @@
         $.get("/api/missions", function(data) {
             var select = $("#level");
             select.empty();
-            select.append('<option value="" selected disabled>请选择状态</option>'); // 添加空选项
+            select.append('<option value="-1" selected>请选择状态</option>'); // 添加空选项
             $.each(data, function(index, mission) {
                 select.append('<option value="' + mission.level + '">' + mission.level + '</option>');
             });

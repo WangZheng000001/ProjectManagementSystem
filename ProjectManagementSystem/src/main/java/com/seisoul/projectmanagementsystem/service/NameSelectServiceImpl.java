@@ -31,7 +31,7 @@ public class NameSelectServiceImpl implements NameSelectService{
             List<Mission> missions = missionMapper.selectByFkMemId(memId);
             return missions;
         }
-    @Override
+    /*@Override
     public List<Mission> projectAllByAnyWay(String memName, Date startTime,Date endTime,Integer level){
         Mission mission = new Mission();
         Integer fKMemId = null;
@@ -52,6 +52,34 @@ public class NameSelectServiceImpl implements NameSelectService{
         if(level != null) {
             mission.setLevel(level);
             System.out.println(mission);
+        }
+        List<Mission> missions = missionMapper.selectByAnyWay(mission);
+        return missions;
+    }*/
+
+    @Override
+    public List<Mission> projectAllByAnyWay(String memName, Date startTime,Date endTime,Integer level){
+        Mission mission = new Mission();
+        Integer fKMemId = null;
+        if(memName.isEmpty()){
+            mission.setFkMemId(null);
+        }else{
+            Member member = memberMapper.selectByMemName(memName);
+            fKMemId = member.getMemId();
+            mission.setFkMemId(fKMemId);
+            System.out.println(mission.getFkMemId());
+        }
+        if(startTime == null) {
+            mission.setStartTime(startTime);
+        }
+        if(endTime != null) {
+            mission.setEndTime(endTime);
+        }
+        if(level >= 0) {
+            mission.setLevel(level);
+            System.out.println(mission);
+        }else {
+            mission.setLevel(null);
         }
         List<Mission> missions = missionMapper.selectByAnyWay(mission);
         return missions;

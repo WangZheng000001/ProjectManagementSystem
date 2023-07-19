@@ -1,6 +1,9 @@
 package com.seisoul.projectmanagementsystem.pojo;
 
-import java.sql.Date;
+
+import java.util.Date;
+
+;
 /*对应任务表*/
 public class Mission {
     private Integer misId;
@@ -99,7 +102,7 @@ public class Mission {
         return fkMemId;
     }
 
-    public void setFkMemId(int fkMemId) {
+    public void setFkMemId(Integer fkMemId) {
         this.fkMemId = fkMemId;
     }
 

@@ -71,16 +71,16 @@
     <select id="selectByAnyWay" resultType="com.seisoul.projectmanagementsystem.pojo.Mission">
         select * from tb_mis
         <where>
-            <if test="fkMemId != null">
+            <if test="fkMemId &gt;= 0">
                 and fk_mem_id = #{fkMemId}
             </if>
-            <!--<if test="startTime != null and startTime != '' ">
+            <if test="startTime != null">
                 and start_time &gt;= #{startTime}
             </if>
-            <if test="endTime !=null and endTime != ''">
+            <if test="endTime !=null">
                 and end_time &lt;= #{endTime}
-            </if>-->
-            <if test="level != null and level !=''">
+            </if>
+            <if test="level &gt;= 0">
                 and level = #{level}
             </if>
             <if test="desc != null and desc !=''">

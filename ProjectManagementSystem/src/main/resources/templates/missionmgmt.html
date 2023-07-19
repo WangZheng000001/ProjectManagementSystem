@@ -62,21 +62,19 @@
             margin-bottom: 20px;
         }
         .content-item label {
-            margin-right: 20px;
+            margin-right: 10px;
         }
         .content-item select {
+            margin-right: 20px;
+        }
+        .content-item .confirmation {
             margin-right: 40px;
         }
-        .content-item .time-label {
-            margin-left: 40px;
-            margin-right: 10px;
+        .content-item .filtersearch {
+            margin-right: 40px;
         }
-        .content-item .date-input {
-            margin-left: 10px;
-            margin-right: 10px;
-        }
-        .content-item .status-label{
-            margin-left: 20px;
+        .content-item .newcase {
+            margin-right: 40px;
         }
     </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -101,7 +99,7 @@
         $.get("/api/missions", function(data) {
             var select = $("#desc");
             select.empty();
-            $.each(data, function(index, member) {
+            $.each(data, function(index, mission) {
                 select.append('<option value="' + mission.desc + '">' + mission.desc + '</option>');
             });
         });
@@ -117,19 +115,14 @@
     <button>全体進度</button>
   </div>
   <div class="content">
-    <form action="/" method="post">
+    <form action="/missioninfo" method="post">
       <div class="content-item">
         <label for="desc">案件名称:</label>
         <select id="desc" name="desc">
         </select>
-        <input type="submit" value="確認">
-        <label class="time-label" for="startTime">時間:</label>
-        <input class="date-input" type="date" id="startTime" name="startTime" placeholder="開始時間">
-        <span>—</span>
-        <input class="date-input" type="date" id="endTime" name="endTime" placeholder="締め切り時間">
-        <label class="status-label" for="level">案件ステータス:</label>
-        <select id="level" name="level">
-        </select>
+        <input class="confirmation" type="submit" value="確認">
+        <input class="filtersearch" type="submit" value="フィルター検索">
+        <input class="newcase" type="submit" value="新規案件">
       </div>
     </form>
   </div>

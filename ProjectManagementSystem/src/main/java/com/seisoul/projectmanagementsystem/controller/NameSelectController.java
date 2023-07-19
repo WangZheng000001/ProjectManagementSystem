@@ -26,8 +26,8 @@ public class NameSelectController {
 
     @RequestMapping("/menbermission1")
     public String menbermission(@RequestParam("memName")String memname,
-                                @RequestParam("startTime")@DateTimeFormat(pattern = "yyyy-MM-dd")Date startTime,
-                                @RequestParam("endTime")@DateTimeFormat(pattern = "yyyy-MM-dd")Date endTime,
+                                @RequestParam(value = "startTime", required = false)@DateTimeFormat(pattern = "yyyy-MM-dd")Date startTime,
+                                @RequestParam(value = "startTime", required = false)@DateTimeFormat(pattern = "yyyy-MM-dd")Date endTime,
                                 @RequestParam("level")Integer level,Model model){
         List<Mission> nameRecord = nameSelectService.projectAllByAnyWay(memname, startTime, endTime, level);
         model.addAttribute("nameRecord",nameRecord);

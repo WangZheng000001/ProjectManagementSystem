@@ -101,8 +101,12 @@
             var select = $("#level");
             select.empty();
             select.append('<option value="-1" selected>请选择状态</option>'); // 添加空选项
+            var uniqueLevels = new Set();
             $.each(data, function(index, mission) {
+                if(!uniqueLevels.has(mission.level)){
                 select.append('<option value="' + mission.level + '">' + mission.level + '</option>');
+                uniqueLevels.add(mission.level);
+                }
             });
         });
     });

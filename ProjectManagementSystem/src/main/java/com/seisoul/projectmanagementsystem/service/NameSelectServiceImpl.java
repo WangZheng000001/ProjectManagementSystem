@@ -62,25 +62,24 @@ public class NameSelectServiceImpl implements NameSelectService{
         Mission mission = new Mission();
         Integer fKMemId = null;
         if(memName.isEmpty()){
-            mission.setFkMemId(null);
+            mission.setFkMemId(-1);
         }else{
             Member member = memberMapper.selectByMemName(memName);
             fKMemId = member.getMemId();
             mission.setFkMemId(fKMemId);
             System.out.println(mission.getFkMemId());
         }
-        if(startTime == null) {
-            mission.setStartTime(startTime);
+        String sTime = String.valueOf(startTime);
+        String eTime = String.valueOf(endTime);
+        if(sTime == null) {
+            mission.setStartTime(null);
         }
-        if(endTime != null) {
-            mission.setEndTime(endTime);
+        if(eTime == null) {
+            mission.setEndTime(null);
         }
-        if(level >= 0) {
-            mission.setLevel(level);
-            System.out.println(mission);
-        }else {
-            mission.setLevel(null);
-        }
+        mission.setLevel(level);
+        System.out.println(mission);
+
         List<Mission> missions = missionMapper.selectByAnyWay(mission);
         return missions;
     }

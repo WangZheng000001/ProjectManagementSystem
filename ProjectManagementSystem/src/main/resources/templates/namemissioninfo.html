@@ -58,6 +58,7 @@
         }
         .content-item {
             display: flex;
+            width: 100%;
             align-items: center;
             margin-bottom: 20px;
         }
@@ -85,6 +86,22 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script>
     $(document).ready(function() {
+        $(".sidebar button").click(function() {
+            // 移除所有按钮的active状态
+            $(".sidebar button").removeClass("active");
+            // 给被点击的按钮添加active状态
+            $(this).addClass("active");
+
+            // 根据被点击的按钮，导航到不同的页面
+            var buttonText = $(this).text();
+            if (buttonText === "個人担当") {
+                window.location.href = "/missioninfo";
+            } else if (buttonText === "案件管理") {
+                window.location.href = "/missionmgmt";
+            } else if (buttonText === "全体進度") {
+                window.location.href = "/allmgmt";
+            }
+        });
         $.get("/api/members", function(data) {
             var select = $("#memName");
             select.empty();
@@ -93,10 +110,6 @@
                 select.append('<option value="' + member.memName + '">' + member.memName + '</option>');
             });
         });
-    });
-    </script>
-  <script>
-    $(document).ready(function() {
         $.get("/api/missions", function(data) {
             var select = $("#level");
             select.empty();

@@ -3,7 +3,7 @@ package com.seisoul.projectmanagementsystem.service;
 import com.seisoul.projectmanagementsystem.pojo.Mission;
 import com.seisoul.projectmanagementsystem.pojo.Project;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 public interface NameSelectService {

@@ -1,7 +1,7 @@
 package com.seisoul.projectmanagementsystem.pojo;
 
 
-import java.util.Date;
+import java.sql.Date;
 
 ;
 /*对应任务表*/

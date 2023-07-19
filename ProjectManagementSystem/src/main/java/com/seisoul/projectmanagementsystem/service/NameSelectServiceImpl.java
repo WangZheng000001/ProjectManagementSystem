@@ -10,8 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.Date;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 @Service
@@ -73,11 +72,18 @@ public class NameSelectServiceImpl implements NameSelectService{
         String eTime = String.valueOf(endTime);
         if(sTime == null) {
             mission.setStartTime(null);
+        }else {
+            Date st = startTime;
+            mission.setStartTime(st);
         }
         if(eTime == null) {
             mission.setEndTime(null);
+        }else {
+            Date et = endTime;
+            mission.setEndTime(et);
         }
         mission.setLevel(level);
+        System.out.println(mission);
         System.out.println(mission);
 
         List<Mission> missions = missionMapper.selectByAnyWay(mission);

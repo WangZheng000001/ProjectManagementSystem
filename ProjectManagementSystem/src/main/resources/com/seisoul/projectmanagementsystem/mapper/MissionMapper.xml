@@ -88,4 +88,13 @@
             </if>
         </where>
     </select>
+
+    <!--方法名:通过项目desc查询任务 返回值:Mission对象 返回数据:指定项目desc的任务数据-->
+    <select id="getMissionByDesc" resultType="com.seisoul.projectmanagementsystem.pojo.Mission">
+        select *from tb_mis
+        <where>
+            `desc` = #{desc}
+        </where>
+    </select>
+
 </mapper>

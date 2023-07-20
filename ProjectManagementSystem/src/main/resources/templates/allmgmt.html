@@ -82,13 +82,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
     $(document).ready(function() {
-        $.get("/api/members", function(data) {
-            var select = $("#memName");
-            select.empty();
-            $.each(data, function(index, member) {
-                select.append('<option value="' + member.memName + '">' + member.memName + '</option>');
-            });
-        });
         $(".sidebar button").click(function() {
             // 移除所有按钮的active状态
             $(".sidebar button").removeClass("active");
@@ -104,6 +97,13 @@
             } else if (buttonText === "全体進度") {
                 window.location.href = "/allmgmt";
             }
+        });
+        $.get("/api/members", function(data) {
+            var select = $("#memName");
+            select.empty();
+            $.each(data, function(index, member) {
+                select.append('<option value="' + member.memName + '">' + member.memName + '</option>');
+            });
         });
     });
     </script>

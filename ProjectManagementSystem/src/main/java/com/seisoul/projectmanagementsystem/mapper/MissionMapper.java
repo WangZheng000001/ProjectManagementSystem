@@ -2,6 +2,8 @@ package com.seisoul.projectmanagementsystem.mapper;
 import com.seisoul.projectmanagementsystem.pojo.Mission;
 import com.seisoul.projectmanagementsystem.pojo.Project;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.Date;
 import java.util.List;
@@ -28,5 +30,7 @@ public interface MissionMapper {
     List<Mission>selectByAnyWay(Mission mission);
     //方法名：通过散装参数动态查询
     List<Mission>selectByAnyWay(Integer FkMemId, Date startTime,Date endTime,Integer level);
+
+    Mission getMissionByDesc(@Param("desc") String desc);
 
 }

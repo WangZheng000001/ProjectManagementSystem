@@ -1,9 +1,6 @@
 package com.seisoul.projectmanagementsystem.mapper;
 import com.seisoul.projectmanagementsystem.pojo.Mission;
-import com.seisoul.projectmanagementsystem.pojo.Project;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.Date;
 import java.util.List;
@@ -33,4 +30,7 @@ public interface MissionMapper {
 
     Mission getMissionByDesc(@Param("desc") String desc);
 
+    @Insert("INSERT INTO tb_mis(misId, desc, fkProjId, addTime, expireTime, misStatus, startTime, endTime, level, progress, fkMemId) VALUES(#{misId}, #{desc}, #{fkProjId}, #{addTime}, #{expireTime}, #{misStatus}, #{startTime}, #{endTime}, #{level}, #{progress}, #{fkMemId})")
+    @Options(useGeneratedKeys = true, keyProperty = "misId")
+    Mission addMission(Mission mission);
 }

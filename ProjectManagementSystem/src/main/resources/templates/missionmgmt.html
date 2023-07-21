@@ -51,7 +51,7 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            width: 80%;
+            width: 100%;
             padding: 10px;
             margin-top: 10px;
             align-items: flex-start;
@@ -76,19 +76,33 @@
         .content-item .newcase {
             margin-right: 40px;
         }
-        .generated-table {
-            border-collapse: collapse;
-            width: 80%;
-            overflow-x: auto;
+        .new{
+            width: 100%;
+            overflow-x: auto; /* 新增样式，使得new容器可以滚动 */
         }
-        .generated-table th,
-        .generated-table td {
-            border: 1px solid black;
+        .generated-table, .add-table {
+            border-collapse: separate;  /* 取消边框折叠 */
+            border-spacing: 0;  /* 设置边框间距为0 */
+            width: 100%;
+            min-width: 600px; /* 设置最小宽度 */
+            overflow-x: auto;
+            border: 1px solid black; /* 添加外边框 */
+            table-layout: fixed; /* 新增样式，使得每一列的宽度都会均匀变化 */
+        }
+        .generated-table th, add-table th,
+        .generated-table td, add-table td {
+            border: 1px solid black; /* 添加内边框 */
+            border-color: red
             text-align: center;
             padding: 4px;
+            box-sizing: border-box;
         }
-        .generated-table tr:first-child {
+        .generated-table tr:first-child .add-table tr:first-child {
              background-color: #f2f2f2;
+        }
+        .add-table input[type='text'] {
+            width: 100%; /* 新增样式，使得输入框宽度为100% */
+            box-sizing: border-box;
         }
     </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -119,14 +133,15 @@
         });
     });
     function getMissionData() {
-    // 阻止表单的默认提交行为
-    event.preventDefault();
-    // 获取用户选择的案件名称
-    var desc = $("#desc").val();
-    // 调用新的API接口，获取对应的mission数据
-    $.get("/api/missions/" + desc, function(mission) {
+        // 阻止表单的默认提交行为
+        event.preventDefault();
+        // 获取用户选择的案件名称
+        var desc = $("#desc").val();
+        // 调用新的API接口，获取对应的mission数据
+        $.get("/api/missions/" + desc, function(mission) {
         // 删除旧的表单
         $(".generated-table").remove();
+        $(".add-mission-form").remove();
         // 创建一个新的表单显示这些数据
         var table = $("<table class='generated-table'></table>");
         var headerRow = $("<tr></tr>");
@@ -138,7 +153,70 @@
          });
         table.append(headerRow);
         table.append(dataRow);
-        $(".content").append(table);  // 将新的表单添加到页面上
+        $(".new").append(table);  // 将新的表单添加到页面上
+        });
+    }
+
+    function createNewMissionForm() {
+        event.preventDefault();
+        // 清除页面上之前生成的元素
+        $(".generated-table").remove();
+        $(".add-mission-form").remove();
+
+        // 创建一个新的表单
+        var form = $("<form class='add-mission-form'></form>");
+        var table = $("<table class='add-table'></table>");
+        var headerRow = $("<tr></tr>");
+        var inputRow = $("<tr></tr>");
+        var headers = ["desc", "fkProjId", "addTime", "expireTime", "misStatus", "startTime", "endTime", "level", "progress", "fkMemId"];
+        headers.forEach(function(header) {
+            headerRow.append($("<th></th>").text(header));
+            var inputCell = $("<td style='width: 100%'></td>");
+            var inputField = $("<input type='text' name='" + header + "'>");
+            inputCell.append(inputField);
+            inputRow.append(inputCell);
+        });
+        table.append(headerRow);
+        table.append(inputRow);
+        form.append(table);
+
+        // 创建一个名为“新規確認”的按钮
+        var submitButton = $("<input type='submit' value='新規確認' disabled>");
+        form.append(submitButton);
+        $(".new").append(form);
+
+        // 监听输入事件，当所有输入框都填写后，启用提交按钮
+        $("input[type='text']").on("input", function() {
+            var allFilled = true;
+            $("input[type='text']").each(function() {
+                if ($(this).val() === "") {
+                    allFilled = false;
+                }
+            });
+            if (allFilled) {
+                submitButton.prop("disabled", false);
+            } else {
+                submitButton.prop("disabled", true);
+            }
+        });
+
+        // 监听表单的提交事件
+        form.on("submit", function(event) {
+            event.preventDefault();
+        // 获取表单数据
+            var formData = {};
+            $("input[type='text']").each(function() {
+                formData[$(this).attr("name")] = $(this).val();
+            });
+        // 发送数据到服务器
+            $.post("/api/missions/add", formData, function() {
+                // 清除表单数据
+                $("input[type='text']").val("");
+                submitButton.prop("disabled", true);
+            }).fail(function(jqXHR, textStatus, errorThrown) {
+            // 在这里处理错误
+               alert("提交失败: " + textStatus + ", " + errorThrown);
+            });
         });
     }
   </script>
@@ -159,9 +237,11 @@
         </select>
         <input class="confirmation" type="submit" value="確認" onclick="getMissionData(event)">
         <input class="filtersearch" type="submit" value="フィルター検索">
-        <input class="newcase" type="submit" value="新規案件">
+        <input class="newcase" type="submit" value="新規案件" onclick="createNewMissionForm(event)">
       </div>
     </form>
+    <div class="new">
+    </div>
   </div>
 </div>
 </body>

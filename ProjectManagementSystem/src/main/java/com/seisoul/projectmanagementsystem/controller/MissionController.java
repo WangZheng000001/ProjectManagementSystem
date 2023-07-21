@@ -3,9 +3,9 @@ package com.seisoul.projectmanagementsystem.controller;
 import com.seisoul.projectmanagementsystem.pojo.Mission;
 import com.seisoul.projectmanagementsystem.service.MissionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,5 +19,16 @@ public class MissionController {
     @GetMapping("/api/missions/{desc}")
     public Mission getMissionByDesc(@PathVariable String desc) {
         return missionService.getMissionByDesc(desc);
+    }
+
+    @PostMapping("/api/missions/add")
+    public ResponseEntity<Mission> addMission(@RequestBody Mission mission) {
+        try {
+            Mission addedMission = missionService.addMission(mission);
+            return new ResponseEntity<>(addedMission, HttpStatus.CREATED);
+        } catch (Exception e) {
+            System.err.println("Failed to add mission: " + e.getMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

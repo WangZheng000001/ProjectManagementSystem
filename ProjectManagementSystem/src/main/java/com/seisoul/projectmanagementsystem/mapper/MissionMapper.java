@@ -33,4 +33,6 @@ public interface MissionMapper {
 
     Mission getMissionByDesc(@Param("desc") String desc);
 
+    int newMission(Mission mission);
+
 }

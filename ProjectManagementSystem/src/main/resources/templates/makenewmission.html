@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>创建新案件</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+        $(document).ready(function() {
+            $.get("/api/members", function(data) {
+                var select = $("#memName");
+                select.empty();
+                select.append('<option value="" selected>担当员工</option>'); // 添加空选项
+                $.each(data, function(index, member) {
+                    select.append('<option value="' + member.memName + '">' + member.memName + '</option>');
+                });
+            });
+            $.get("/api/projects", function(data) {
+                var select = $("#projName");
+                select.empty();
+                select.append('<option value="" selected>对应项目名</option>'); // 添加空选项
+                $.each(data, function(index, project) {
+                    select.append('<option value="' + project.projName + '">' + project.projName + '</option>');
+                });
+            });
+
+            var select = $("#level");
+            select.empty();
+            select.append('<option value="-1" selected>项目等级</option>'); // 添加空选项
+            for (var i = 1; i <= 10; i++) {
+                select.append('<option value="' + i + '">' + i + '</option>');
+            }
+
+            var select = $("#misStatus");
+            select.empty();
+            select.append('<option value="-1" selected>案件状态</option>'); // 添加空选项
+            for (var j = 1; j <= 10; j++) {
+                select.append('<option value="' + j + '">' + j + '</option>');
+            }
+
+            var select = $("#progress");
+            select.empty();
+            select.append('<option value="-1" selected>案件进度</option>'); // 添加空选项
+            for (var k = 1; k <= 10; k++) {
+                select.append('<option value="' + k + '">' + k + '</option>');
+            }
+        });
+    </script>
+</head>
+<body>
+<h1>输入新案件信息</h1>
+<form action="/makenewmission" method="post">
+  <label for="desc">案件名：</label><br>
+  <input type="text" id="desc" name="desc" required><br>
+
+  <label for="memName">担当人：</label>
+  <select id="memName" name="memName"></select>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+
+  <label for="projName">项目编号：</label>
+  <select id="projName" name="projName"></select>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+
+  <label for="level">案件等级：</label>
+  <select id="level" name="level"></select>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+
+  <label for="misStatus">案件状态：</label>
+  <select id="misStatus" name="misStatus"></select>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+
+  <label for="progress">案件进展：</label>
+  <select id="progress" name="progress"></select>
+  <br>
+
+  <label for="addTime">任务发布时间：</label>
+  <input class="date-input" type="date" id="addTime" name="addTime" placeholder="任务发布时间">
+
+  <label for="expireTime">任务给定时间：</label>
+  <input class="date-input" type="date" id="expireTime" name="expireTime" placeholder="任务给定时间">
+
+  <br>
+
+  <label for="startTime">开始时间：</label>
+  <input class="date-input" type="date" id="startTime" name="startTime" placeholder="开始时间">
+
+  <label for="endTime">结束时间：</label>
+  <input class="date-input" type="date" id="endTime" name="endTime" placeholder="结束时间">
+
+  <br><br>
+  <input type="submit" value="提交" />
+</form>
+</body>
+</html>

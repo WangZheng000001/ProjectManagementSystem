@@ -29,4 +29,5 @@ public interface ProjectMapper {
 
     //方法名:通过项目状态查询项目 返回值:Project对象的集合 方法形参:Project对象
     List<Project> selectByProjStatus(Project project);
+    Project selectByProjNameProject(String projName);
 }

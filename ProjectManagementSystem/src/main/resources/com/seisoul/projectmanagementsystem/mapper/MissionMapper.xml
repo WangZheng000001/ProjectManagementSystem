@@ -3,6 +3,12 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.seisoul.projectmanagementsystem.mapper.MissionMapper">
+    <insert id="newMission">
+    insert into tb_mis
+    (`desc`, fk_proj_id, add_time, expire_time, mis_status, start_time, end_time, level, progress, fk_mem_id)
+    values
+    (#{desc}, #{fkProjId}, #{addTime}, #{expireTime}, #{misStatus}, #{startTime}, #{endTime}, #{level}, #{progress}, #{fkMemId})
+    </insert>
     <!--<resultMap id="MemberResultMap" type="com.seisoul.projectmanagementsystem.pojo.Mission">
         <result column="mis_id" property="misId"/>
         <result column="desc" property="desc"/>

@@ -80,6 +80,12 @@
         </where>
 
     </select>
+    <select id="selectByProjNameProject" resultType="com.seisoul.projectmanagementsystem.pojo.Project">
+        select * from tb_proj
+        <where>
+            proj_name like #{projName}
+        </where>
+    </select>
 
 
 </mapper>

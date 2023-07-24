@@ -22,12 +22,13 @@ public class MissionController {
     }
 
     @PostMapping("/api/missions/add")
-    public ResponseEntity<Mission> addMission(@RequestBody Mission mission) {
-        try {
-            Mission addedMission = missionService.addMission(mission);
+    public ResponseEntity<Mission> addMission(@ModelAttribute Mission mission) {
+        System.out.println("Mission before adding: " + mission);
+        Mission addedMission = missionService.addMission(mission);
+        System.out.println("Mission after adding: " + mission);
+        if (addedMission != null) {
             return new ResponseEntity<>(addedMission, HttpStatus.CREATED);
-        } catch (Exception e) {
-            System.err.println("Failed to add mission: " + e.getMessage());
+        } else {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

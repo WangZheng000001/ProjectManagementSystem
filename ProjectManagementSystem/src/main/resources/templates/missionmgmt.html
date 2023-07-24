@@ -92,7 +92,6 @@
         .generated-table th, add-table th,
         .generated-table td, add-table td {
             border: 1px solid black; /* 添加内边框 */
-            border-color: red
             text-align: center;
             padding: 4px;
             box-sizing: border-box;
@@ -132,6 +131,8 @@
             });
         });
     });
+
+    //按照案件名显示单一案件信息
     function getMissionData() {
         // 阻止表单的默认提交行为
         event.preventDefault();
@@ -157,6 +158,7 @@
         });
     }
 
+    //生成增加mission信息的输入表格
     function createNewMissionForm() {
         event.preventDefault();
         // 清除页面上之前生成的元素
@@ -172,7 +174,45 @@
         headers.forEach(function(header) {
             headerRow.append($("<th></th>").text(header));
             var inputCell = $("<td style='width: 100%'></td>");
-            var inputField = $("<input type='text' name='" + header + "'>");
+            if (["addTime", "expireTime", "startTime", "endTime"].includes(header)) {
+                // 创建日期选择器
+                var inputField = $("<input type='date' name='" + header + "'>");
+            } else if (["level", "misStatus"].includes(header)) {
+                // 创建下拉列表
+                var inputField = $("<select name='" + header + "'><option value='0'>0</option><option value='1'>1</option><option value='2'>2</option></select>");
+            } else if (header === "fkMemId") {
+                // 创建下拉列表，选项从服务器获取
+                var inputField = $("<select id='fkMemId' name='fkMemId'></select>");
+                $.get("/api/missions", function(data) {
+                    var select = $("#fkMemId");
+                    select.empty();
+                    var fkMemIdSet = new Set(); // 创建一个Set对象来存储唯一的fkMemId值
+                    $.each(data, function(index, mission) {
+                        fkMemIdSet.add(mission.fkMemId); // 将fkMemId添加到Set对象中
+                    });
+                    // 遍历Set对象，将每个唯一的fkMemId添加到下拉列表中
+                    fkMemIdSet.forEach(function(fkMemId) {
+                        select.append('<option value="' + fkMemId + '">' + fkMemId + '</option>');
+                    });
+                });
+            } else if (header === "fkProjId") {
+                // 创建下拉列表，选项从服务器获取
+                var inputField = $("<select id='fkProjId' name='fkProjId'></select>");
+                $.get("/api/missions", function(data) {
+                    var select = $("#fkProjId");
+                    select.empty();
+                    var fkProjIdSet = new Set(); // 创建一个Set对象来存储唯一的fkProjId值
+                    $.each(data, function(index, mission) {
+                        fkProjIdSet.add(mission.fkProjId); // 将fkProjId添加到Set对象中
+                    });
+                    // 遍历Set对象，将每个唯一的fkMemId添加到下拉列表中
+                    fkProjIdSet.forEach(function(fkProjId) {
+                        select.append('<option value="' + fkProjId + '">' + fkProjId + '</option>');
+                    });
+                });
+            } else {
+                var inputField = $("<input type='text' name='" + header + "'>");
+            }
             inputCell.append(inputField);
             inputRow.append(inputCell);
         });
@@ -186,9 +226,9 @@
         $(".new").append(form);
 
         // 监听输入事件，当所有输入框都填写后，启用提交按钮
-        $("input[type='text']").on("input", function() {
+        $("input").on("input", function() {
             var allFilled = true;
-            $("input[type='text']").each(function() {
+            $("input").each(function() {
                 if ($(this).val() === "") {
                     allFilled = false;
                 }
@@ -205,13 +245,13 @@
             event.preventDefault();
         // 获取表单数据
             var formData = {};
-            $("input[type='text']").each(function() {
+            $("input").each(function() {
                 formData[$(this).attr("name")] = $(this).val();
             });
         // 发送数据到服务器
             $.post("/api/missions/add", formData, function() {
                 // 清除表单数据
-                $("input[type='text']").val("");
+                $("input").val("");
                 submitButton.prop("disabled", true);
             }).fail(function(jqXHR, textStatus, errorThrown) {
             // 在这里处理错误

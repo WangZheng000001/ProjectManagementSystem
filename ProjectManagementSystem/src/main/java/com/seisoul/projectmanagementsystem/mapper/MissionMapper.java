@@ -31,6 +31,6 @@ public interface MissionMapper {
     Mission getMissionByDesc(@Param("desc") String desc);
 
     @Insert("INSERT INTO tb_mis(misId, desc, fkProjId, addTime, expireTime, misStatus, startTime, endTime, level, progress, fkMemId) VALUES(#{misId}, #{desc}, #{fkProjId}, #{addTime}, #{expireTime}, #{misStatus}, #{startTime}, #{endTime}, #{level}, #{progress}, #{fkMemId})")
-    @Options(useGeneratedKeys = true, keyProperty = "misId")
+    @Options(useGeneratedKeys = true, keyProperty = "misId", keyColumn="misId")
     Mission addMission(Mission mission);
 }

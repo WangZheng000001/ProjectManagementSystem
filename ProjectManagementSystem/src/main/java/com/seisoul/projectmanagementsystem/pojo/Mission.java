@@ -1,24 +1,51 @@
 package com.seisoul.projectmanagementsystem.pojo;
 
 
+import jakarta.persistence.*;
+
 import java.sql.Date;
 
-;
+@Entity
 /*对应任务表*/
 public class Mission {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Column(name = "mis_id")
     private Integer misId;
+
+    @Column(name = "desc")
     private String desc;
+
+    @Column(name = "fk_proj_id")
     private Integer fkProjId;
+
+    @Column(name = "add_time")
     private Date addTime;
+
+    @Column(name = "expire_time")
     private Date expireTime;
+
+    @Column(name = "mis_status")
     private Integer misStatus;
+
+    @Column(name = "start_time")
     private Date startTime;
+
+    @Column(name = "end_time")
     private Date endTime;
+
+    @Column(name = "level")
     private Integer level;
+
+    @Column(name = "progress")
     private Integer progress;
+
+    @Column(name = "fk_mem_id")
     private Integer fkMemId;
 
-    public int getMisId() {
+
+    public Integer getMisId() {
         return misId;
     }
 

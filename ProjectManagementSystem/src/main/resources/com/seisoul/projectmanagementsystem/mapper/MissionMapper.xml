@@ -97,4 +97,9 @@
         </where>
     </select>
 
+    <insert id="addMission" parameterType="com.seisoul.projectmanagementsystem.pojo.Mission" useGeneratedKeys="true" keyProperty="misId">
+        INSERT INTO tb_mis(`desc`, `fk_proj_id`, `add_time`, `expire_time`, `mis_status`, `start_time`, `end_time`, `level`, `progress`, `fk_mem_id`)
+        VALUES(#{desc}, #{fkProjId}, #{addTime}, #{expireTime}, #{misStatus}, #{startTime}, #{endTime}, #{level}, #{progress}, #{fkMemId})
+    </insert>
+
 </mapper>

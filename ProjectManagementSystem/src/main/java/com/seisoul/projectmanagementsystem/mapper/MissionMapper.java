@@ -30,7 +30,5 @@ public interface MissionMapper {
 
     Mission getMissionByDesc(@Param("desc") String desc);
 
-    @Insert("INSERT INTO tb_mis(misId, desc, fkProjId, addTime, expireTime, misStatus, startTime, endTime, level, progress, fkMemId) VALUES(#{misId}, #{desc}, #{fkProjId}, #{addTime}, #{expireTime}, #{misStatus}, #{startTime}, #{endTime}, #{level}, #{progress}, #{fkMemId})")
-    @Options(useGeneratedKeys = true, keyProperty = "misId", keyColumn="misId")
-    Mission addMission(Mission mission);
+    int addMission(Mission mission); //在MyBatis中，INSERT语句的Mapper方法通常应该返回void或者int（表示插入的行数）。
 }

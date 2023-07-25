@@ -18,7 +18,7 @@ public class MissionService {
         return missionMapper.getMissionByDesc(desc);
     }
 
-    public Mission addMission(Mission mission) {
+    public int addMission(Mission mission) {
         return missionMapper.addMission(mission);
     }
 

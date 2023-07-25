@@ -246,13 +246,13 @@
         // 获取表单数据
             var formData = {};
         // 这里的"input, select"会选择所有的input和select元素
-            $("input, select").each(function() {
+            $(".add-mission-form input, .add-mission-form select").each(function() {
                 formData[$(this).attr("name")] = $(this).val();
             });
         // 发送数据到服务器
             $.post("/api/missions/add", formData, function() {
                 // 清除表单数据
-                $("input, select").val("");
+                $(".add-table input, .add-table select").val("");
                 submitButton.prop("disabled", true);
             }).fail(function(jqXHR, textStatus, errorThrown) {
             // 在这里处理错误

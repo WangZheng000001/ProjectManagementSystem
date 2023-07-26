@@ -25,7 +25,7 @@ public interface MissionMapper {
 
     //方法名:通过成员id查询任务 返回值:Mission对象的集合 方法形参:Mission对象
     List<Mission> selectByFkMemId(Mission mission);
-    
+
     //方法名：通过成员ID，开始时间，结束时间，以及项目状态 动态查询
     List<Mission>selectByAnyWay(Mission mission);
     //方法名：通过散装参数动态查询
@@ -33,6 +33,6 @@ public interface MissionMapper {
 
     Mission getMissionByDesc(@Param("desc") String desc);
 
-    int newMission(Mission mission);
+    int addMission(Mission mission); //在MyBatis中，INSERT语句的Mapper方法通常应该返回void或者int（表示插入的行数）。
 
 }

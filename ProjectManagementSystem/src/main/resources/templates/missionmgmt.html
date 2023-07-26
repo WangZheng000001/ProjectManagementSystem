@@ -197,17 +197,12 @@
                 });
             } else if (header === "fkProjId") {
                 // 创建下拉列表，选项从服务器获取
-                var inputField = $("<select id='fkProjId' name='fkProjId'></select>");
+                var inputField = $("<select id='projId' name='fkProjId'></select>");
                 $.get("/api/projects", function(data) {
-                    var select = $("#ProjId");
+                    var select = $("#projId");
                     select.empty();
-                    var fkProjIdSet = new Set(); // 创建一个Set对象来存储唯一的fkProjId值
-                    $.each(data, function(index, mission) {
-                        fkProjIdSet.add(mission.fkProjId); // 将fkProjId添加到Set对象中
-                    });
-                    // 遍历Set对象，将每个唯一的fkMemId添加到下拉列表中
-                    fkProjIdSet.forEach(function(fkProjId) {
-                        select.append('<option value="' + fkProjId + '">' + fkProjId + '</option>');
+                    $.each(data, function(index, project) {
+                        select.append('<option value="' + project.projId + '">' + project.projId + '</option>');
                     });
                 });
             } else {

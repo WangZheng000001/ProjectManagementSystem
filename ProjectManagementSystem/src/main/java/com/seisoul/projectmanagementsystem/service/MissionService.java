@@ -10,7 +10,16 @@ import java.util.List;
 public class MissionService {
     @Autowired
     private MissionMapper missionMapper;
-    public List<Mission> selectAllMission(){return missionMapper.selectAllMission();}
+    public List<Mission> selectAllMission(){
+        return missionMapper.selectAllMission();
+    }
 
-    public Mission getMissionByDesc(String desc){return missionMapper.getMissionByDesc(desc);}
+    public Mission getMissionByDesc(String desc){
+        return missionMapper.getMissionByDesc(desc);
+    }
+
+    public int addMission(Mission mission) {
+        return missionMapper.addMission(mission);
+    }
+
 }

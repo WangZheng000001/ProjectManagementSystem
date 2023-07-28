@@ -4,33 +4,7 @@
     <title>プロジェクト組織進度管理システム</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-    $(document).ready(function() {
-        $.get("/api/members", function(data) {
-            var select = $("#memName");
-            select.empty();
-            $.each(data, function(index, member) {
-                select.append('<option value="' + member.memName + '">' + member.memName + '</option>');
-            });
-        });
-        $(".sidebar button").click(function() {
-            // 移除所有按钮的active状态
-            $(".sidebar button").removeClass("active");
-            // 给被点击的按钮添加active状态
-            $(this).addClass("active");
 
-            // 根据被点击的按钮，导航到不同的页面
-            var buttonText = $(this).text();
-            if (buttonText === "個人担当") {
-                window.location.href = "/missioninfo";
-            } else if (buttonText === "案件管理") {
-                window.location.href = "/missionmgmt";
-            } else if (buttonText === "全体進度") {
-                window.location.href = "/allmgmt";
-            }
-        });
-    });
-    </script>
 </head>
 <body>
 <h1>プロジェクト組織進度管理システム</h1>
@@ -58,6 +32,33 @@
         </form>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $.get("/api/members", function(data) {
+            var select = $("#memName");
+            select.empty();
+            $.each(data, function(index, member) {
+                select.append('<option value="' + member.memName + '">' + member.memName + '</option>');
+            });
+        });
+        $(".sidebar button").click(function() {
+            // 移除所有按钮的active状态
+            $(".sidebar button").removeClass("active");
+            // 给被点击的按钮添加active状态
+            $(this).addClass("active");
+
+            // 根据被点击的按钮，导航到不同的页面
+            var buttonText = $(this).text();
+            if (buttonText === "個人担当") {
+                window.location.href = "/missioninfo";
+            } else if (buttonText === "案件管理") {
+                window.location.href = "/missionmgmt";
+            } else if (buttonText === "全体進度") {
+                window.location.href = "/allmgmt";
+            }
+        });
+    });
+    </script>
 </body>
 <style>
         body {

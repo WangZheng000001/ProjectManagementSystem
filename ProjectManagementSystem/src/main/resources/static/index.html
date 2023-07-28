@@ -1,9 +1,50 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
+
 <head>
     <meta charset="UTF-8">
     <title>login</title>
-    <style>
+</head>
+
+<body>
+<div class="container">
+    <h1>プロジェクト組織進度管理システム</h1>
+    <form action="/memberinfo" method="post">
+        <div class="input-group">
+            <div><span>メンバーID:</span></div>
+            <div><input type="text" id="memId" name="memId" required oninput="validateForm()"></div>
+        </div>
+        <div class="input-group">
+            <div><span>メンバーパスワード:</span></div>
+            <div><input type="password" id="memPassword" name="memPassword" required oninput="validateForm()"></div>
+        </div>
+        <div class="input-group">
+            <div><span>プロジェクトパスワード:</span></div>
+            <div><input type="password" id="projectPassword" name="projectPassword" required oninput="validateForm()">
+            </div>
+        </div>
+        <div class="button-container">
+            <button type="submit" id="register" disabled>登録</button>
+        </div>
+    </form>
+</div>
+<script>
+        function validateForm() {
+            let memId = document.getElementById("memId").value;
+            let password = document.getElementById("memPassword").value;
+            let projectPassword = document.getElementById("projectPassword").value;
+
+            if (memId && password && projectPassword) {
+                document.getElementById("register").disabled = false;
+            } else {
+                document.getElementById("register").disabled = true;
+            }
+        }
+
+</script>
+</body>
+
+<style>
         h1{
             margin-bottom: 50px;
         }
@@ -63,41 +104,7 @@
             background-color: #add8e6;
             cursor: pointer;
         }
-    </style>
-    <script>
-        function validateForm() {
-            let memId = document.getElementById("memId").value;
-            let password = document.getElementById("memPassword").value;
-            let projectPassword = document.getElementById("projectPassword").value;
 
-            if (memId && password && projectPassword) {
-                document.getElementById("register").disabled = false;
-            } else {
-                document.getElementById("register").disabled = true;
-            }
-        }
-    </script>
-</head>
-<body>
-<div class="container">
-    <h1>プロジェクト組織進度管理システム</h1>
-    <form action="/memberinfo" method="post">
-        <div class="input-group">
-            <div><span>メンバーID:</span></div>
-            <div><input type="text" id="memId" name="memId" required oninput="validateForm()"></div>
-        </div>
-        <div class="input-group">
-            <div><span>メンバーパスワード:</span></div>
-            <div><input type="password" id="memPassword" name="memPassword" required oninput="validateForm()"></div>
-        </div>
-        <div class="input-group">
-            <div><span>プロジェクトパスワード:</span></div>
-            <div><input type="password" id="projectPassword" name="projectPassword" required oninput="validateForm()"></div>
-        </div>
-        <div class="button-container">
-            <button type="submit" id="register" disabled>登録</button>
-        </div>
-    </form>
-</div>
-</body>
+</style>
+
 </html>
